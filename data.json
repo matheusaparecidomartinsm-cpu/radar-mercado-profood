@@ -2,97 +2,517 @@
   "meta": {
     "atualizado_em": "2026-11-02T11:45:00-03:00",
     "edicao": 1,
+    "manchete": "Dólar a R$ 5,40 encarece o papel-cartão; delivery segue puxando as vendas",
     "resumo_do_dia": "Semana de Copom (3 e 4/nov) após o choque de mercado de 26/out: dólar saltou de R$ 4,99 para R$ 5,40 e a B3 acionou circuit breaker após o resultado eleitoral. Para a ProFood, o câmbio mais alto pressiona papel-cartão e insumos importados em 2027, enquanto o foodservice segue crescendo puxado pelo delivery (26,6% das vendas no IDF de maio) e pela expansão de redes de hambúrguer no Nordeste.",
     "proximas_atualizacoes": "Diária, por volta das 7h (horário de Brasília)"
   },
   "kpis": [
-    {"id": "fs2026", "rotulo": "Foodservice 2026 (projeção)", "valor": "R$ 540 bi", "variacao": "+9% vs 2025", "tendencia": "up", "fonte": "Abrasel", "ref": "2026", "tipo": "Projeção de terceiros", "url": "https://comprerural.com/seara-preve-crescer-6-vezes-acima-do-mercado-no-canal-de-food-service/"},
-    {"id": "franq12m", "rotulo": "Franchising (12 meses)", "valor": "R$ 308,4 bi", "variacao": "+10,7%", "tendencia": "up", "fonte": "ABF", "ref": "12m até 1T26", "tipo": "Dado setorial", "url": "https://www.cartacapital.com.br/do-micro-ao-macro/franquias-crescem-10-por-cento-terceiro-trimestre-2026/"},
-    {"id": "delivery", "rotulo": "Delivery no faturamento", "valor": "26,6%", "variacao": "vendas delivery +34% a/a", "tendencia": "up", "fonte": "IFB – IDF", "ref": "mai/2026", "tipo": "Dado setorial", "url": "https://gironews.com/food-service/food-service-cresce-92-em-maio-e-confirma-resiliencia-do-setor-aponta-ifb/"},
-    {"id": "embal", "rotulo": "Produção física de embalagens 2026", "valor": "+0,2%", "variacao": "faixa −0,2% a +0,6%", "tendencia": "flat", "fonte": "ABRE / FGV IBRE", "ref": "proj. 2026", "tipo": "Projeção de terceiros", "url": "https://gironews.com/embalagem/producao-de-embalagens-deve-crescer-02-em-2026-aponta-estudo/"},
-    {"id": "selic", "rotulo": "Selic atual", "valor": "13,75%", "variacao": "Focus: 11,75% no fim de 2027", "tendencia": "down", "fonte": "BCB / Focus", "ref": "26/out/2026", "tipo": "Dado oficial + projeção", "url": "https://soubrasilia.com/focus-26-outubro-2026-ipca-5-19-pib-1-80-selic-13-25-dolar-5-05/"},
-    {"id": "ipca27", "rotulo": "IPCA 2027 (Focus)", "valor": "4,34%", "variacao": "acima do centro da meta (3%)", "tendencia": "up", "fonte": "BCB / Focus", "ref": "26/out/2026", "tipo": "Projeção de terceiros", "url": "https://soubrasilia.com/focus-26-outubro-2026-ipca-5-19-pib-1-80-selic-13-25-dolar-5-05/"},
-    {"id": "dolar", "rotulo": "Dólar (fechamento 26/out)", "valor": "R$ 5,40", "variacao": "+8,2% no dia", "tendencia": "up", "fonte": "Agência Brasil", "ref": "26/out/2026", "tipo": "Dado de mercado", "url": "https://m.imirante.com/noticias/brasil/2026/10/26/dolar-sobe-821-bolsa-cai-1388-apos-reeleicao-lula"},
-    {"id": "pib27", "rotulo": "PIB 2027 (Focus)", "valor": "1,31%", "variacao": "vinha de 1,60% em julho", "tendencia": "down", "fonte": "BCB / Focus", "ref": "26/out/2026", "tipo": "Projeção de terceiros", "url": "https://soubrasilia.com/focus-26-outubro-2026-ipca-5-19-pib-1-80-selic-13-25-dolar-5-05/"}
+    {
+      "id": "fs2026",
+      "rotulo": "Foodservice 2026 (projeção)",
+      "valor": "R$ 540 bi",
+      "variacao": "+9% vs 2025",
+      "tendencia": "up",
+      "fonte": "Abrasel",
+      "ref": "2026",
+      "tipo": "Projeção de terceiros",
+      "url": "https://comprerural.com/seara-preve-crescer-6-vezes-acima-do-mercado-no-canal-de-food-service/"
+    },
+    {
+      "id": "franq12m",
+      "rotulo": "Franchising (12 meses)",
+      "valor": "R$ 308,4 bi",
+      "variacao": "+10,7%",
+      "tendencia": "up",
+      "fonte": "ABF",
+      "ref": "12m até 1T26",
+      "tipo": "Dado setorial",
+      "url": "https://www.cartacapital.com.br/do-micro-ao-macro/franquias-crescem-10-por-cento-terceiro-trimestre-2026/"
+    },
+    {
+      "id": "delivery",
+      "rotulo": "Delivery no faturamento",
+      "valor": "26,6%",
+      "variacao": "vendas delivery +34% a/a",
+      "tendencia": "up",
+      "fonte": "IFB – IDF",
+      "ref": "mai/2026",
+      "tipo": "Dado setorial",
+      "url": "https://gironews.com/food-service/food-service-cresce-92-em-maio-e-confirma-resiliencia-do-setor-aponta-ifb/"
+    },
+    {
+      "id": "embal",
+      "rotulo": "Produção física de embalagens 2026",
+      "valor": "+0,2%",
+      "variacao": "faixa −0,2% a +0,6%",
+      "tendencia": "flat",
+      "fonte": "ABRE / FGV IBRE",
+      "ref": "proj. 2026",
+      "tipo": "Projeção de terceiros",
+      "url": "https://gironews.com/embalagem/producao-de-embalagens-deve-crescer-02-em-2026-aponta-estudo/"
+    },
+    {
+      "id": "selic",
+      "rotulo": "Selic atual",
+      "valor": "13,75%",
+      "variacao": "Focus: 11,75% no fim de 2027",
+      "tendencia": "down",
+      "fonte": "BCB / Focus",
+      "ref": "26/out/2026",
+      "tipo": "Dado oficial + projeção",
+      "url": "https://soubrasilia.com/focus-26-outubro-2026-ipca-5-19-pib-1-80-selic-13-25-dolar-5-05/"
+    },
+    {
+      "id": "ipca27",
+      "rotulo": "IPCA 2027 (Focus)",
+      "valor": "4,34%",
+      "variacao": "acima do centro da meta (3%)",
+      "tendencia": "up",
+      "fonte": "BCB / Focus",
+      "ref": "26/out/2026",
+      "tipo": "Projeção de terceiros",
+      "url": "https://soubrasilia.com/focus-26-outubro-2026-ipca-5-19-pib-1-80-selic-13-25-dolar-5-05/"
+    },
+    {
+      "id": "dolar",
+      "rotulo": "Dólar (fechamento 26/out)",
+      "valor": "R$ 5,40",
+      "variacao": "+8,2% no dia",
+      "tendencia": "up",
+      "fonte": "Agência Brasil",
+      "ref": "26/out/2026",
+      "tipo": "Dado de mercado",
+      "url": "https://m.imirante.com/noticias/brasil/2026/10/26/dolar-sobe-821-bolsa-cai-1388-apos-reeleicao-lula"
+    },
+    {
+      "id": "pib27",
+      "rotulo": "PIB 2027 (Focus)",
+      "valor": "1,31%",
+      "variacao": "vinha de 1,60% em julho",
+      "tendencia": "down",
+      "fonte": "BCB / Focus",
+      "ref": "26/out/2026",
+      "tipo": "Projeção de terceiros",
+      "url": "https://soubrasilia.com/focus-26-outubro-2026-ipca-5-19-pib-1-80-selic-13-25-dolar-5-05/"
+    }
   ],
   "noticias": [
-    {"data": "2026-10-28", "titulo": "Klabin lucra R$ 393 mi no 3T26, com custos e câmbio pressionando margens", "resumo": "Lucro caiu 18% sobre o 3T25; kraftliner teve alta de preço e o papel-cartão revestido mostrou evolução. Sinal de que reajustes de cartão seguem no radar.", "categoria": "Papel & Celulose", "impacto": "atencao", "fonte": "Money Times", "url": "https://moneytimes.com.br/lucro-da-klabin-klbn11-cai-18-no-3o-trimestre-para-r-393-milhoes-lmrs/"},
-    {"data": "2026-10-28", "titulo": "TCU calcula CBS de referência em 11,35%; Abrasel teme alta de preços em 2027", "resumo": "Bares e restaurantes têm redução no regime específico, mas aplicada sobre a alíquota de referência. Pesquisa da Abrasel mostra 60,9% dos empresários despreparados para a reforma.", "categoria": "Regulação & Tributos", "impacto": "atencao", "fonte": "Muita Informação / Jornal do Comércio", "url": "https://muitainformacao.com.br/negocios/novo-imposto-preocupa-bares-e-restaurantes-e-pode-elevar-precos-e-reduzir-empregos-alerta-abrasel/"},
-    {"data": "2026-10-26", "titulo": "Dólar fecha a R$ 5,40 e Ibovespa cai quase 14% após eleição", "resumo": "A B3 acionou circuit breaker pela primeira vez em seis anos. O dólar chegou a R$ 5,60 na máxima; casas como ASA projetam R$ 5,70 no fim de 2027.", "categoria": "Macroeconomia", "impacto": "ameaca", "fonte": "Agência Brasil / InvestNews", "url": "https://investnews.com.br/investimentos/b3-paralisa-negociacao-ja-na-abertura-da-bolsa-com-queda-acima-de-10-dolar-passa-de-r-560/"},
-    {"data": "2026-10-26", "titulo": "Focus: IPCA 2027 sobe a 4,34% e PIB 2027 cai a 1,31%", "resumo": "Selic projetada para dez/2027 recuou para 11,75%. Coleta feita antes da disparada do dólar — próximas edições podem revisar câmbio e inflação para cima.", "categoria": "Macroeconomia", "impacto": "atencao", "fonte": "SouBrasília", "url": "https://soubrasilia.com/focus-26-outubro-2026-ipca-5-19-pib-1-80-selic-13-25-dolar-5-05/"},
-    {"data": "2026-10-23", "titulo": "Johnny Rockets abre sua maior loja em Maceió e mira 60 unidades até 2027", "resumo": "A rede tem 50 restaurantes e vende cerca de 220 mil hambúrgueres por mês; o plano inclui novas praças no Nordeste.", "categoria": "Redes & Expansão", "impacto": "oportunidade", "fonte": "Mercado&Consumo", "url": "https://mercadoeconsumo.com.br/23/10/2026/foodservice/johnny-rockets-expande-no-nordeste-e-abre-unidade-de-269-m%C2%B2-em-maceio-a-maior-da-rede/amp/"},
-    {"data": "2026-10-19", "titulo": "Seara quer crescer no foodservice seis vezes acima do mercado", "resumo": "A unidade Seara Food Solutions atende 100 mil clientes e cresceu 50% em faturamento em três anos, com foco em pequenos e médios estabelecimentos.", "categoria": "Foodservice", "impacto": "neutro", "fonte": "Canal Rural", "url": "https://www.canalrural.com.br/economia/seara-projeta-crescer-no-food-service-em-ritmo-seis-vezes-maior-que-o-mercado-em-2026/"},
-    {"data": "2026-09-16", "titulo": "iFood anuncia R$ 24 bi em investimentos até mar/2027 (+41%)", "resumo": "A plataforma supera 180 milhões de pedidos mensais e disputa mercado com Keeta e 99Food — mais pedidos significam mais embalagens de delivery.", "categoria": "Delivery", "impacto": "oportunidade", "fonte": "Congresso em Foco", "url": "https://www.congressoemfoco.com.br/noticia/122304/ifood-anuncia-no-move-investimento-recorde-de-r-24-bilhoes-no-brasil"},
-    {"data": "2026-09-10", "titulo": "Franquias faturam R$ 76,3 bi no 2º trimestre (+9,3%)", "resumo": "O semestre somou R$ 149 bi segundo a ABF. O balanço do 3º trimestre deve sair em dezembro.", "categoria": "Franquias", "impacto": "oportunidade", "fonte": "Central do Varejo", "url": "https://centraldovarejo.com.br/franquias-crescem-93-no-2o-trimestre-e-faturam-r-763-bilhoes/"},
-    {"data": "2026-09-01", "titulo": "ABRE: produção de embalagens cresce 2,4% no 2º trimestre", "resumo": "Alta dessazonalizada contra o trimestre anterior, enquanto a indústria de transformação recuou. Para o ano, a projeção segue em +0,2%.", "categoria": "Embalagens", "impacto": "neutro", "fonte": "Giro News", "url": "https://gironews.com/embalagem/producao-de-embalagens-deve-crescer-02-em-2026-aponta-estudo/"},
-    {"data": "2026-08-13", "titulo": "Simples Nacional tem até jan/2027 para se preparar para IBS/CBS", "resumo": "Restaurantes do regime regular já não têm notas rejeitadas por falha nos campos IBS/CBS; a decisão de regime afeta o crédito tributário na compra de embalagens.", "categoria": "Regulação & Tributos", "impacto": "atencao", "fonte": "Giro News", "url": "https://gironews.com/food-service/nova-regra-evita-rejeicao-de-notas-fiscais-por-erros-em-ibs-e-cbs/"},
-    {"data": "2026-08-04", "titulo": "IFB: foodservice cresce 4,7% em junho", "resumo": "O instituto destaca consumidor mais seletivo e pressão por eficiência de custos para manter a rentabilidade das redes.", "categoria": "Foodservice", "impacto": "neutro", "fonte": "Giro News", "url": "https://gironews.com/food-service/food-service-registra-alta-de-47-nas-vendas-em-junho/"},
-    {"data": "2026-08-05", "titulo": "Klabin 2T26: papel-cartão avança 7% em volume no ano", "resumo": "Análise da Genial aponta o cartão como destaque da divisão de papéis no trimestre.", "categoria": "Papel & Celulose", "impacto": "neutro", "fonte": "Genial Investimentos", "url": "https://media-genial-analisa.genialinvestimentos.com.br/wp-content/uploads/2026/08/05105252/PapelCelulose_Klabin_Resultado2T26_PT.pdf"},
-    {"data": "2026-07-01", "titulo": "Hambúrguer movimenta R$ 35,4 bi em 12 meses (+7%)", "resumo": "Dados do CREST/IFB até mar/2026 confirmam a categoria como uma das mais fortes do foodservice — e a maior consumidora de caixas de papel-cartão.", "categoria": "Foodservice", "impacto": "oportunidade", "fonte": "Giro News", "url": "https://gironews.com/tag/ifb/"},
-    {"data": "2026-06-01", "titulo": "Shake Shack chega ao Brasil em 2027 com plano de 40 lojas", "resumo": "Operação via Bold Hospitality; primeira unidade em São Paulo no 1º semestre de 2027. Rede nova = homologação de fornecedores do zero.", "categoria": "Redes & Expansão", "impacto": "oportunidade", "fonte": "InvestNews", "url": "https://investnews.com.br/negocios/shake-shack-chegada-brasil-2027/"}
+    {
+      "data": "2026-10-28",
+      "titulo": "Klabin lucra R$ 393 mi no 3T26, com custos e câmbio pressionando margens",
+      "resumo": "Lucro caiu 18% sobre o 3T25; kraftliner teve alta de preço e o papel-cartão revestido mostrou evolução. Sinal de que reajustes de cartão seguem no radar.",
+      "categoria": "Papel & Celulose",
+      "impacto": "atencao",
+      "fonte": "Money Times",
+      "url": "https://moneytimes.com.br/lucro-da-klabin-klbn11-cai-18-no-3o-trimestre-para-r-393-milhoes-lmrs/"
+    },
+    {
+      "data": "2026-10-28",
+      "titulo": "TCU calcula CBS de referência em 11,35%; Abrasel teme alta de preços em 2027",
+      "resumo": "Bares e restaurantes têm redução no regime específico, mas aplicada sobre a alíquota de referência. Pesquisa da Abrasel mostra 60,9% dos empresários despreparados para a reforma.",
+      "categoria": "Regulação & Tributos",
+      "impacto": "atencao",
+      "fonte": "Muita Informação / Jornal do Comércio",
+      "url": "https://muitainformacao.com.br/negocios/novo-imposto-preocupa-bares-e-restaurantes-e-pode-elevar-precos-e-reduzir-empregos-alerta-abrasel/"
+    },
+    {
+      "data": "2026-10-26",
+      "titulo": "Dólar fecha a R$ 5,40 e Ibovespa cai quase 14% após eleição",
+      "resumo": "A B3 acionou circuit breaker pela primeira vez em seis anos. O dólar chegou a R$ 5,60 na máxima; casas como ASA projetam R$ 5,70 no fim de 2027.",
+      "categoria": "Macroeconomia",
+      "impacto": "ameaca",
+      "fonte": "Agência Brasil / InvestNews",
+      "url": "https://investnews.com.br/investimentos/b3-paralisa-negociacao-ja-na-abertura-da-bolsa-com-queda-acima-de-10-dolar-passa-de-r-560/"
+    },
+    {
+      "data": "2026-10-26",
+      "titulo": "Focus: IPCA 2027 sobe a 4,34% e PIB 2027 cai a 1,31%",
+      "resumo": "Selic projetada para dez/2027 recuou para 11,75%. Coleta feita antes da disparada do dólar — próximas edições podem revisar câmbio e inflação para cima.",
+      "categoria": "Macroeconomia",
+      "impacto": "atencao",
+      "fonte": "SouBrasília",
+      "url": "https://soubrasilia.com/focus-26-outubro-2026-ipca-5-19-pib-1-80-selic-13-25-dolar-5-05/"
+    },
+    {
+      "data": "2026-10-23",
+      "titulo": "Johnny Rockets abre sua maior loja em Maceió e mira 60 unidades até 2027",
+      "resumo": "A rede tem 50 restaurantes e vende cerca de 220 mil hambúrgueres por mês; o plano inclui novas praças no Nordeste.",
+      "categoria": "Redes & Expansão",
+      "impacto": "oportunidade",
+      "fonte": "Mercado&Consumo",
+      "url": "https://mercadoeconsumo.com.br/23/10/2026/foodservice/johnny-rockets-expande-no-nordeste-e-abre-unidade-de-269-m%C2%B2-em-maceio-a-maior-da-rede/amp/"
+    },
+    {
+      "data": "2026-10-19",
+      "titulo": "Seara quer crescer no foodservice seis vezes acima do mercado",
+      "resumo": "A unidade Seara Food Solutions atende 100 mil clientes e cresceu 50% em faturamento em três anos, com foco em pequenos e médios estabelecimentos.",
+      "categoria": "Foodservice",
+      "impacto": "neutro",
+      "fonte": "Canal Rural",
+      "url": "https://www.canalrural.com.br/economia/seara-projeta-crescer-no-food-service-em-ritmo-seis-vezes-maior-que-o-mercado-em-2026/"
+    },
+    {
+      "data": "2026-09-16",
+      "titulo": "iFood anuncia R$ 24 bi em investimentos até mar/2027 (+41%)",
+      "resumo": "A plataforma supera 180 milhões de pedidos mensais e disputa mercado com Keeta e 99Food — mais pedidos significam mais embalagens de delivery.",
+      "categoria": "Delivery",
+      "impacto": "oportunidade",
+      "fonte": "Congresso em Foco",
+      "url": "https://www.congressoemfoco.com.br/noticia/122304/ifood-anuncia-no-move-investimento-recorde-de-r-24-bilhoes-no-brasil"
+    },
+    {
+      "data": "2026-09-10",
+      "titulo": "Franquias faturam R$ 76,3 bi no 2º trimestre (+9,3%)",
+      "resumo": "O semestre somou R$ 149 bi segundo a ABF. O balanço do 3º trimestre deve sair em dezembro.",
+      "categoria": "Franquias",
+      "impacto": "oportunidade",
+      "fonte": "Central do Varejo",
+      "url": "https://centraldovarejo.com.br/franquias-crescem-93-no-2o-trimestre-e-faturam-r-763-bilhoes/"
+    },
+    {
+      "data": "2026-09-01",
+      "titulo": "ABRE: produção de embalagens cresce 2,4% no 2º trimestre",
+      "resumo": "Alta dessazonalizada contra o trimestre anterior, enquanto a indústria de transformação recuou. Para o ano, a projeção segue em +0,2%.",
+      "categoria": "Embalagens",
+      "impacto": "neutro",
+      "fonte": "Giro News",
+      "url": "https://gironews.com/embalagem/producao-de-embalagens-deve-crescer-02-em-2026-aponta-estudo/"
+    },
+    {
+      "data": "2026-08-13",
+      "titulo": "Simples Nacional tem até jan/2027 para se preparar para IBS/CBS",
+      "resumo": "Restaurantes do regime regular já não têm notas rejeitadas por falha nos campos IBS/CBS; a decisão de regime afeta o crédito tributário na compra de embalagens.",
+      "categoria": "Regulação & Tributos",
+      "impacto": "atencao",
+      "fonte": "Giro News",
+      "url": "https://gironews.com/food-service/nova-regra-evita-rejeicao-de-notas-fiscais-por-erros-em-ibs-e-cbs/"
+    },
+    {
+      "data": "2026-08-04",
+      "titulo": "IFB: foodservice cresce 4,7% em junho",
+      "resumo": "O instituto destaca consumidor mais seletivo e pressão por eficiência de custos para manter a rentabilidade das redes.",
+      "categoria": "Foodservice",
+      "impacto": "neutro",
+      "fonte": "Giro News",
+      "url": "https://gironews.com/food-service/food-service-registra-alta-de-47-nas-vendas-em-junho/"
+    },
+    {
+      "data": "2026-08-05",
+      "titulo": "Klabin 2T26: papel-cartão avança 7% em volume no ano",
+      "resumo": "Análise da Genial aponta o cartão como destaque da divisão de papéis no trimestre.",
+      "categoria": "Papel & Celulose",
+      "impacto": "neutro",
+      "fonte": "Genial Investimentos",
+      "url": "https://media-genial-analisa.genialinvestimentos.com.br/wp-content/uploads/2026/08/05105252/PapelCelulose_Klabin_Resultado2T26_PT.pdf"
+    },
+    {
+      "data": "2026-07-01",
+      "titulo": "Hambúrguer movimenta R$ 35,4 bi em 12 meses (+7%)",
+      "resumo": "Dados do CREST/IFB até mar/2026 confirmam a categoria como uma das mais fortes do foodservice — e a maior consumidora de caixas de papel-cartão.",
+      "categoria": "Foodservice",
+      "impacto": "oportunidade",
+      "fonte": "Giro News",
+      "url": "https://gironews.com/tag/ifb/"
+    },
+    {
+      "data": "2026-06-01",
+      "titulo": "Shake Shack chega ao Brasil em 2027 com plano de 40 lojas",
+      "resumo": "Operação via Bold Hospitality; primeira unidade em São Paulo no 1º semestre de 2027. Rede nova = homologação de fornecedores do zero.",
+      "categoria": "Redes & Expansão",
+      "impacto": "oportunidade",
+      "fonte": "InvestNews",
+      "url": "https://investnews.com.br/negocios/shake-shack-chegada-brasil-2027/"
+    }
   ],
   "sinais": [
-    {"tipo": "ameaca", "titulo": "Câmbio e custo do papel-cartão", "texto": "Dólar na casa de R$ 5,40 e Klabin com margens pressionadas indicam risco de reajuste de cartão no 1º semestre de 2027. Vale negociar volumes e preço com fornecedores antes da virada do ano."},
-    {"tipo": "oportunidade", "titulo": "Delivery segue ganhando participação", "texto": "Delivery passa de 26% das vendas das grandes redes (IFB) e o iFood amplia investimentos. Caixas para delivery, combos e berços personalizados são a frente de maior recorrência."},
-    {"tipo": "oportunidade", "titulo": "Hamburguerias em expansão no Nordeste e chegada de novas marcas", "texto": "Johnny Rockets (50→60 lojas até 2027) e Shake Shack (estreia em 2027) abrem janela de homologação de fornecedor de embalagem."},
-    {"tipo": "atencao", "titulo": "Reforma tributária muda a conta do cliente", "texto": "Com IBS/CBS a partir de 2027, restaurantes no regime regular passam a tomar crédito sobre insumos — embalagem com nota completa e bem classificada vira argumento comercial."}
+    {
+      "tipo": "ameaca",
+      "titulo": "Câmbio e custo do papel-cartão",
+      "texto": "Dólar na casa de R$ 5,40 e Klabin com margens pressionadas indicam risco de reajuste de cartão no 1º semestre de 2027. Vale negociar volumes e preço com fornecedores antes da virada do ano."
+    },
+    {
+      "tipo": "oportunidade",
+      "titulo": "Delivery segue ganhando participação",
+      "texto": "Delivery passa de 26% das vendas das grandes redes (IFB) e o iFood amplia investimentos. Caixas para delivery, combos e berços personalizados são a frente de maior recorrência."
+    },
+    {
+      "tipo": "oportunidade",
+      "titulo": "Hamburguerias em expansão no Nordeste e chegada de novas marcas",
+      "texto": "Johnny Rockets (50→60 lojas até 2027) e Shake Shack (estreia em 2027) abrem janela de homologação de fornecedor de embalagem."
+    },
+    {
+      "tipo": "atencao",
+      "titulo": "Reforma tributária muda a conta do cliente",
+      "texto": "Com IBS/CBS a partir de 2027, restaurantes no regime regular passam a tomar crédito sobre insumos — embalagem com nota completa e bem classificada vira argumento comercial."
+    }
   ],
   "series": {
     "focus_2027": {
       "titulo": "Expectativas Focus para 2027",
       "fonte": "Banco Central (Focus), via imprensa",
-      "datas": ["2026-07-27", "2026-09-21", "2026-10-19", "2026-10-26"],
-      "ipca": [4.22, 4.30, 4.32, 4.34],
-      "pib": [1.60, 1.43, 1.32, 1.31],
-      "selic": [12.00, 12.00, 12.00, 11.75],
-      "dolar": [5.29, 5.28, 5.22, 5.15]
+      "datas": [
+        "2026-07-27",
+        "2026-09-21",
+        "2026-10-19",
+        "2026-10-26"
+      ],
+      "ipca": [
+        4.22,
+        4.3,
+        4.32,
+        4.34
+      ],
+      "pib": [
+        1.6,
+        1.43,
+        1.32,
+        1.31
+      ],
+      "selic": [
+        12.0,
+        12.0,
+        12.0,
+        11.75
+      ],
+      "dolar": [
+        5.29,
+        5.28,
+        5.22,
+        5.15
+      ]
     },
     "idf_2026": {
       "titulo": "IDF/IFB – vendas nominais do foodservice (var. % a/a)",
       "fonte": "Instituto Foodservice Brasil (IDF)",
-      "meses": ["mar", "abr", "mai", "jun"],
-      "valores": [3.2, 7.7, 9.2, 4.7]
+      "meses": [
+        "mar",
+        "abr",
+        "mai",
+        "jun"
+      ],
+      "valores": [
+        3.2,
+        7.7,
+        9.2,
+        4.7
+      ]
     }
   },
   "mercado": [
-    {"indicador": "Faturamento foodservice 2026", "valor": "R$ 540 bi (+9%)", "fonte": "Abrasel", "ano": "2026", "tipo": "Projeção de terceiros", "url": "https://comprerural.com/seara-preve-crescer-6-vezes-acima-do-mercado-no-canal-de-food-service/"},
-    {"indicador": "Faturamento foodservice 2024 (gasto do consumidor)", "valor": "R$ 523 bi", "fonte": "IFB", "ano": "2024", "tipo": "Dado setorial", "url": "https://saipos.com/noticia/eventos-do-mercado-food-service-em-2026"},
-    {"indicador": "Vendas da indústria de alimentos ao canal foodservice", "valor": "R$ 287,9 bi (+10,1%)", "fonte": "ABIA", "ano": "2025", "tipo": "Dado setorial", "url": "https://conteudo.stone.com.br/o-que-e-food-service/"},
-    {"indicador": "Estabelecimentos de foodservice", "valor": "≈ 1,6 milhão", "fonte": "IFB", "ano": "2023", "tipo": "Dado setorial (desatualizado)", "url": "https://mercadoeconsumo.com.br/23/09/2024/foodservice/foodservice-deve-crescer-em-media-7-ao-ano-ate-2028-preve-estudo/amp/"},
-    {"indicador": "Crescimento médio esperado do foodservice até 2028", "valor": "≈ 7% a.a.", "fonte": "Redirection International", "ano": "2024", "tipo": "Projeção de terceiros", "url": "https://mercadoeconsumo.com.br/23/09/2024/foodservice/foodservice-deve-crescer-em-media-7-ao-ano-ate-2028-preve-estudo/amp/"},
-    {"indicador": "Faturamento do franchising (12 meses)", "valor": "R$ 308,4 bi (+10,7%)", "fonte": "ABF", "ano": "1T26", "tipo": "Dado setorial", "url": "https://www.cartacapital.com.br/do-micro-ao-macro/franquias-crescem-10-por-cento-terceiro-trimestre-2026/"},
-    {"indicador": "Unidades franqueadas em operação", "valor": "204.908", "fonte": "ABF", "ano": "mar/2026", "tipo": "Dado setorial", "url": "https://www.portaltela.com/economia/2026/06/01/franquias-crescem-101-no-1o-trimestre-de-2026/"},
-    {"indicador": "Franquias de Alimentação – Food Service (1T26)", "valor": "+10,4% a/a", "fonte": "ABF", "ano": "1T26", "tipo": "Dado setorial", "url": "https://centraldovarejo.com.br/?p=44307"},
-    {"indicador": "Participação do delivery (redes associadas IFB)", "valor": "26,6%", "fonte": "IFB – IDF", "ano": "mai/2026", "tipo": "Dado setorial (amostra de grandes redes)", "url": "https://gironews.com/food-service/food-service-cresce-92-em-maio-e-confirma-resiliencia-do-setor-aponta-ifb/"},
-    {"indicador": "Categoria hambúrguer (gasto 12 meses)", "valor": "R$ 35,4 bi (+7%)", "fonte": "CREST / IFB", "ano": "12m até mar/2026", "tipo": "Dado setorial", "url": "https://gironews.com/tag/ifb/"},
-    {"indicador": "Categoria donuts (gasto 12 meses)", "valor": "R$ 656,7 mi", "fonte": "IFB", "ano": "12m até mar/2026", "tipo": "Dado setorial", "url": "https://gironews.com/tag/instituto-foodservice-brasil/"},
-    {"indicador": "Pedidos mensais iFood", "valor": "> 180 milhões", "fonte": "iFood", "ano": "set/2026", "tipo": "Dado de empresa", "url": "https://www.congressoemfoco.com.br/noticia/122304/ifood-anuncia-no-move-investimento-recorde-de-r-24-bilhoes-no-brasil"},
-    {"indicador": "Produção física de embalagens", "valor": "−0,3% (2025) / +0,2% (proj. 2026)", "fonte": "ABRE / FGV IBRE", "ano": "2025–26", "tipo": "Dado setorial + projeção", "url": "https://gironews.com/embalagem/industria-de-embalagens-fecha-2025-em-estabilidade-aponta-abre/"},
-    {"indicador": "Preço do papel-cartão no Brasil (grande indústria)", "valor": "Estável em reais desde mar/2025 até jul/2026", "fonte": "Revista O Papel / ESALQ", "ano": "2025–26", "tipo": "Dado setorial", "url": "https://www.sinpacel.org.br/wp-content/uploads/2026/08/indicadores-de-precos.pdf"}
+    {
+      "indicador": "Faturamento foodservice 2026",
+      "valor": "R$ 540 bi (+9%)",
+      "fonte": "Abrasel",
+      "ano": "2026",
+      "tipo": "Projeção de terceiros",
+      "url": "https://comprerural.com/seara-preve-crescer-6-vezes-acima-do-mercado-no-canal-de-food-service/"
+    },
+    {
+      "indicador": "Faturamento foodservice 2024 (gasto do consumidor)",
+      "valor": "R$ 523 bi",
+      "fonte": "IFB",
+      "ano": "2024",
+      "tipo": "Dado setorial",
+      "url": "https://saipos.com/noticia/eventos-do-mercado-food-service-em-2026"
+    },
+    {
+      "indicador": "Vendas da indústria de alimentos ao canal foodservice",
+      "valor": "R$ 287,9 bi (+10,1%)",
+      "fonte": "ABIA",
+      "ano": "2025",
+      "tipo": "Dado setorial",
+      "url": "https://conteudo.stone.com.br/o-que-e-food-service/"
+    },
+    {
+      "indicador": "Estabelecimentos de foodservice",
+      "valor": "≈ 1,6 milhão",
+      "fonte": "IFB",
+      "ano": "2023",
+      "tipo": "Dado setorial (desatualizado)",
+      "url": "https://mercadoeconsumo.com.br/23/09/2024/foodservice/foodservice-deve-crescer-em-media-7-ao-ano-ate-2028-preve-estudo/amp/"
+    },
+    {
+      "indicador": "Crescimento médio esperado do foodservice até 2028",
+      "valor": "≈ 7% a.a.",
+      "fonte": "Redirection International",
+      "ano": "2024",
+      "tipo": "Projeção de terceiros",
+      "url": "https://mercadoeconsumo.com.br/23/09/2024/foodservice/foodservice-deve-crescer-em-media-7-ao-ano-ate-2028-preve-estudo/amp/"
+    },
+    {
+      "indicador": "Faturamento do franchising (12 meses)",
+      "valor": "R$ 308,4 bi (+10,7%)",
+      "fonte": "ABF",
+      "ano": "1T26",
+      "tipo": "Dado setorial",
+      "url": "https://www.cartacapital.com.br/do-micro-ao-macro/franquias-crescem-10-por-cento-terceiro-trimestre-2026/"
+    },
+    {
+      "indicador": "Unidades franqueadas em operação",
+      "valor": "204.908",
+      "fonte": "ABF",
+      "ano": "mar/2026",
+      "tipo": "Dado setorial",
+      "url": "https://www.portaltela.com/economia/2026/06/01/franquias-crescem-101-no-1o-trimestre-de-2026/"
+    },
+    {
+      "indicador": "Franquias de Alimentação – Food Service (1T26)",
+      "valor": "+10,4% a/a",
+      "fonte": "ABF",
+      "ano": "1T26",
+      "tipo": "Dado setorial",
+      "url": "https://centraldovarejo.com.br/?p=44307"
+    },
+    {
+      "indicador": "Participação do delivery (redes associadas IFB)",
+      "valor": "26,6%",
+      "fonte": "IFB – IDF",
+      "ano": "mai/2026",
+      "tipo": "Dado setorial (amostra de grandes redes)",
+      "url": "https://gironews.com/food-service/food-service-cresce-92-em-maio-e-confirma-resiliencia-do-setor-aponta-ifb/"
+    },
+    {
+      "indicador": "Categoria hambúrguer (gasto 12 meses)",
+      "valor": "R$ 35,4 bi (+7%)",
+      "fonte": "CREST / IFB",
+      "ano": "12m até mar/2026",
+      "tipo": "Dado setorial",
+      "url": "https://gironews.com/tag/ifb/"
+    },
+    {
+      "indicador": "Categoria donuts (gasto 12 meses)",
+      "valor": "R$ 656,7 mi",
+      "fonte": "IFB",
+      "ano": "12m até mar/2026",
+      "tipo": "Dado setorial",
+      "url": "https://gironews.com/tag/instituto-foodservice-brasil/"
+    },
+    {
+      "indicador": "Pedidos mensais iFood",
+      "valor": "> 180 milhões",
+      "fonte": "iFood",
+      "ano": "set/2026",
+      "tipo": "Dado de empresa",
+      "url": "https://www.congressoemfoco.com.br/noticia/122304/ifood-anuncia-no-move-investimento-recorde-de-r-24-bilhoes-no-brasil"
+    },
+    {
+      "indicador": "Produção física de embalagens",
+      "valor": "−0,3% (2025) / +0,2% (proj. 2026)",
+      "fonte": "ABRE / FGV IBRE",
+      "ano": "2025–26",
+      "tipo": "Dado setorial + projeção",
+      "url": "https://gironews.com/embalagem/industria-de-embalagens-fecha-2025-em-estabilidade-aponta-abre/"
+    },
+    {
+      "indicador": "Preço do papel-cartão no Brasil (grande indústria)",
+      "valor": "Estável em reais desde mar/2025 até jul/2026",
+      "fonte": "Revista O Papel / ESALQ",
+      "ano": "2025–26",
+      "tipo": "Dado setorial",
+      "url": "https://www.sinpacel.org.br/wp-content/uploads/2026/08/indicadores-de-precos.pdf"
+    }
   ],
   "redes": [
-    {"nome": "Johnny Rockets", "segmento": "Hamburgueria", "unidades": "50", "meta": "60 até 2027", "regiao": "Nordeste em expansão", "prioridade": "Alta", "obs": "220 mil hambúrgueres/mês; nova loja em Maceió", "url": "https://mercadoeconsumo.com.br/23/10/2026/foodservice/johnny-rockets-expande-no-nordeste-e-abre-unidade-de-269-m%C2%B2-em-maceio-a-maior-da-rede/amp/"},
-    {"nome": "Shake Shack (Bold Hospitality)", "segmento": "Hamburgueria premium", "unidades": "0", "meta": "40 até 2036; 1ª em SP no 1S27", "regiao": "Sudeste", "prioridade": "Alta", "obs": "Rede entrante: janela de homologação de fornecedores", "url": "https://investnews.com.br/negocios/shake-shack-chegada-brasil-2027/"},
-    {"nome": "Taco Bell (Yum Brands)", "segmento": "Fast-food mexicano", "unidades": "34 (último dado público)", "meta": "200 até 2030", "regiao": "Concentrada em SP", "prioridade": "Média", "obs": "Plano de 3 lojas/mês; confirmar números atuais", "url": "https://analitica.auvp.com.br/noticias/taco-bell-acelera-expansao-no-brasil-com-nova-gestao-da-yum-brands-"},
-    {"nome": "Água Doce Sabores do Brasil", "segmento": "Restaurante brasileiro", "unidades": "n/d", "meta": "15 lojas em shoppings até 2027", "regiao": "Interior / cidades médias", "prioridade": "Média", "obs": "Novo formato de shopping exige embalagem para takeaway", "url": "https://gironews.com/tag/2027/"}
+    {
+      "nome": "Johnny Rockets",
+      "segmento": "Hamburgueria",
+      "unidades": "50",
+      "meta": "60 até 2027",
+      "regiao": "Nordeste em expansão",
+      "prioridade": "Alta",
+      "obs": "220 mil hambúrgueres/mês; nova loja em Maceió",
+      "url": "https://mercadoeconsumo.com.br/23/10/2026/foodservice/johnny-rockets-expande-no-nordeste-e-abre-unidade-de-269-m%C2%B2-em-maceio-a-maior-da-rede/amp/"
+    },
+    {
+      "nome": "Shake Shack (Bold Hospitality)",
+      "segmento": "Hamburgueria premium",
+      "unidades": "0",
+      "meta": "40 até 2036; 1ª em SP no 1S27",
+      "regiao": "Sudeste",
+      "prioridade": "Alta",
+      "obs": "Rede entrante: janela de homologação de fornecedores",
+      "url": "https://investnews.com.br/negocios/shake-shack-chegada-brasil-2027/"
+    },
+    {
+      "nome": "Taco Bell (Yum Brands)",
+      "segmento": "Fast-food mexicano",
+      "unidades": "34 (último dado público)",
+      "meta": "200 até 2030",
+      "regiao": "Concentrada em SP",
+      "prioridade": "Média",
+      "obs": "Plano de 3 lojas/mês; confirmar números atuais",
+      "url": "https://analitica.auvp.com.br/noticias/taco-bell-acelera-expansao-no-brasil-com-nova-gestao-da-yum-brands-"
+    },
+    {
+      "nome": "Água Doce Sabores do Brasil",
+      "segmento": "Restaurante brasileiro",
+      "unidades": "n/d",
+      "meta": "15 lojas em shoppings até 2027",
+      "regiao": "Interior / cidades médias",
+      "prioridade": "Média",
+      "obs": "Novo formato de shopping exige embalagem para takeaway",
+      "url": "https://gironews.com/tag/2027/"
+    }
   ],
   "cenarios": {
     "nota": "MODELAGEM PRÓPRIA — não é dado oficial. Base de partida: projeção Abrasel de R$ 540 bi para 2026. Crescimento nominal 2027 por cenário, ajustado ao Focus (IPCA 2027 ≈ 4,3%, PIB 2027 ≈ 1,3%) e ao histórico do IDF/ABF.",
     "itens": [
-      {"nome": "Conservador", "cresc_fs": 4.5, "fs_2027": 564.3, "cresc_embal": -0.5, "cresc_cartao": 0.5, "premissas": "Câmbio acima de R$ 5,60, consumo das famílias fraco, IBS/CBS elevando preço do cardápio; crescimento abaixo da inflação."},
-      {"nome": "Base", "cresc_fs": 7.0, "fs_2027": 577.8, "cresc_embal": 0.5, "cresc_cartao": 2.5, "premissas": "IPCA ≈ 4,3%, Selic caindo para ≈ 11,75%, delivery mantendo ganho de participação; substituição gradual de plástico por papel."},
-      {"nome": "Otimista", "cresc_fs": 9.0, "fs_2027": 588.6, "cresc_embal": 1.5, "cresc_cartao": 4.5, "premissas": "Câmbio volta abaixo de R$ 5,20, expansão acelerada de franquias de alimentação (≈ +10%) e entrada de novas redes."}
+      {
+        "nome": "Conservador",
+        "cresc_fs": 4.5,
+        "fs_2027": 564.3,
+        "cresc_embal": -0.5,
+        "cresc_cartao": 0.5,
+        "premissas": "Câmbio acima de R$ 5,60, consumo das famílias fraco, IBS/CBS elevando preço do cardápio; crescimento abaixo da inflação."
+      },
+      {
+        "nome": "Base",
+        "cresc_fs": 7.0,
+        "fs_2027": 577.8,
+        "cresc_embal": 0.5,
+        "cresc_cartao": 2.5,
+        "premissas": "IPCA ≈ 4,3%, Selic caindo para ≈ 11,75%, delivery mantendo ganho de participação; substituição gradual de plástico por papel."
+      },
+      {
+        "nome": "Otimista",
+        "cresc_fs": 9.0,
+        "fs_2027": 588.6,
+        "cresc_embal": 1.5,
+        "cresc_cartao": 4.5,
+        "premissas": "Câmbio volta abaixo de R$ 5,20, expansão acelerada de franquias de alimentação (≈ +10%) e entrada de novas redes."
+      }
     ]
   },
   "agenda": [
-    {"data": "2026-11-03", "evento": "Copom – reunião de 3 e 4/nov (decisão de Selic)"},
-    {"data": "2026-12-08", "evento": "Copom – reunião de 8 e 9/dez"},
-    {"data": "2026-12-01", "evento": "ABF – balanço do 3º trimestre de 2026 (previsão: início de dezembro)"},
-    {"data": "2027-01-01", "evento": "Início da CBS e prazo de preparação do Simples Nacional para IBS/CBS"},
-    {"data": "2027-03-31", "evento": "Fim do ciclo de investimento de R$ 24 bi do iFood"},
-    {"data": "2027-06-30", "evento": "Shake Shack: 1ª loja em São Paulo (previsão 1º semestre)"}
+    {
+      "data": "2026-11-03",
+      "evento": "Copom – reunião de 3 e 4/nov (decisão de Selic)"
+    },
+    {
+      "data": "2026-12-08",
+      "evento": "Copom – reunião de 8 e 9/dez"
+    },
+    {
+      "data": "2026-12-01",
+      "evento": "ABF – balanço do 3º trimestre de 2026 (previsão: início de dezembro)"
+    },
+    {
+      "data": "2027-01-01",
+      "evento": "Início da CBS e prazo de preparação do Simples Nacional para IBS/CBS"
+    },
+    {
+      "data": "2027-03-31",
+      "evento": "Fim do ciclo de investimento de R$ 24 bi do iFood"
+    },
+    {
+      "data": "2027-06-30",
+      "evento": "Shake Shack: 1ª loja em São Paulo (previsão 1º semestre)"
+    }
   ],
   "historico": [
-    {"data": "2026-11-02", "nota": "Primeira edição: KPIs, 14 notícias, séries Focus e IDF, rastreador de redes e cenários 2027."}
+    {
+      "data": "2026-11-02",
+      "nota": "Primeira edição: KPIs, 14 notícias, séries Focus e IDF, rastreador de redes e cenários 2027."
+    }
   ]
 }
