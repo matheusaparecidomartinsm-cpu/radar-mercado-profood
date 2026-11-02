@@ -4,264 +4,449 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Radar de Mercado ProFood — Foodservice & Embalagens</title>
+<meta name="description" content="Inteligência de mercado diária: foodservice, embalagens de papel-cartão e macroeconomia para o planejamento comercial 2027 da ProFood / Tuicial.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f6f5f1; --card:#ffffff; --ink:#1d2320; --muted:#5f6a64; --line:#e3e1d9;
-  --brand:#1f6b4a; --brand-2:#2f8f63; --brand-soft:#e6f2ec;
-  --opp:#1f7a4d; --opp-bg:#e7f4ec; --risk:#b3412f; --risk-bg:#fbe9e5; --warn:#9a6a08; --warn-bg:#fdf3dc; --neu:#55606a; --neu-bg:#eef0f2;
-  --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
+  --paper:#f1eee7; --paper-2:#e8e3d8; --ink:#151515; --ink-2:#55524c; --ink-3:#8b867c;
+  --rule:rgba(21,21,21,.14); --rule-strong:rgba(21,21,21,.85);
+  --c:#00a3da; --c-t:#00749c; --m:#e5007e; --m-t:#b8005f; --y:#ffe100; --y-t:#7a6a00; --k:#151515;
+  --display:"Archivo",system-ui,sans-serif; --mono:"Geist Mono",ui-monospace,monospace;
+  --pad:clamp(16px,3.2vw,40px);
 }
 @media (prefers-color-scheme:dark){
-  :root{--bg:#121513;--card:#1b201d;--ink:#e9ece9;--muted:#9aa59f;--line:#2b322e;--brand:#58c08d;--brand-2:#73d3a3;--brand-soft:#1d2f26;
-  --opp:#6fd39f;--opp-bg:#1b2e24;--risk:#f08a76;--risk-bg:#3a201b;--warn:#e7bd5a;--warn-bg:#352b14;--neu:#aab4bd;--neu-bg:#252b30;}
+  :root{--paper:#121211;--paper-2:#1c1b19;--ink:#ece8df;--ink-2:#a8a398;--ink-3:#77736b;--rule:rgba(236,232,223,.14);--rule-strong:rgba(236,232,223,.8);
+  --c:#2cc0f0;--c-t:#5fd0f5;--m:#ff3d9e;--m-t:#ff6db5;--y:#ffe94a;--y-t:#ffe94a;--k:#ece8df;}
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5}
-a{color:var(--brand)}
-header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0 8px}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{width:38px;height:38px;border-radius:10px;background:var(--brand);display:grid;place-items:center;color:#fff;font-weight:700}
-h1{font-family:Fraunces,Georgia,serif;font-size:20px;margin:0;letter-spacing:-.01em}
-.sub{color:var(--muted);font-size:12.5px}
-.stamp{font-size:12.5px;color:var(--muted);text-align:right}
-.stamp b{color:var(--ink)}
-.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--brand-2);margin-right:6px;box-shadow:0 0 0 3px var(--brand-soft)}
-nav{display:flex;gap:4px;overflow-x:auto;padding-bottom:8px}
-nav a{text-decoration:none;color:var(--muted);padding:7px 12px;border-radius:8px;font-weight:500;font-size:14px;white-space:nowrap}
-nav a.on{background:var(--brand-soft);color:var(--brand)}
-main{padding:22px 0 60px}
-section.view{display:none} section.view.on{display:block}
-h2{font-family:Fraunces,Georgia,serif;font-size:22px;margin:0 0 4px}
-h3{font-size:15px;margin:0 0 10px}
-.lead{color:var(--muted);margin:0 0 18px;max-width:820px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-.summary{border-left:4px solid var(--brand);margin-bottom:18px}
-.summary p{margin:0;font-size:15.5px}
-.grid{display:grid;gap:14px}
-.kpis{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));margin-bottom:22px}
-.kpi .l{font-size:12.5px;color:var(--muted);font-weight:500}
-.kpi .v{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:4px 0 2px}
-.kpi .d{font-size:12.5px}
-.kpi .s{font-size:11.5px;color:var(--muted);margin-top:8px;border-top:1px dashed var(--line);padding-top:6px}
-.up{color:var(--opp)} .down{color:var(--risk)} .flat{color:var(--muted)}
-.two{grid-template-columns:2fr 1fr}
-@media(max-width:860px){.two{grid-template-columns:1fr}}
-.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 11px;font-size:12.5px;cursor:pointer;font-family:inherit}
-.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
-.news{display:flex;flex-direction:column;gap:10px}
-.item{padding:14px 16px}
-.item .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-bottom:4px}
-.item h4{margin:0 0 4px;font-size:15px;line-height:1.35}
-.item h4 a{color:var(--ink);text-decoration:none} .item h4 a:hover{text-decoration:underline}
-.item p{margin:0;color:var(--muted);font-size:13.5px}
-.tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px}
-.t-oportunidade{background:var(--opp-bg);color:var(--opp)}
-.t-ameaca{background:var(--risk-bg);color:var(--risk)}
-.t-atencao{background:var(--warn-bg);color:var(--warn)}
-.t-neutro{background:var(--neu-bg);color:var(--neu)}
-.cat{background:var(--brand-soft);color:var(--brand)}
-.sig{padding:14px;border-radius:12px;margin-bottom:10px}
-.sig b{display:block;margin-bottom:3px;font-size:14px}
-.sig span{font-size:13px}
-.sig.oportunidade{background:var(--opp-bg)} .sig.oportunidade b{color:var(--opp)}
-.sig.ameaca{background:var(--risk-bg)} .sig.ameaca b{color:var(--risk)}
-.sig.atencao{background:var(--warn-bg)} .sig.atencao b{color:var(--warn)}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-th{text-align:left;font-size:12px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--line);padding:8px 10px}
-td{border-bottom:1px solid var(--line);padding:9px 10px;vertical-align:top}
-tr:last-child td{border-bottom:0}
-.tbl{overflow-x:auto;padding:4px 6px}
-.pill{font-size:11px;padding:2px 8px;border-radius:6px;background:var(--neu-bg);color:var(--neu);white-space:nowrap}
-.pill.p-Alta{background:var(--opp-bg);color:var(--opp)} .pill.p-Média{background:var(--warn-bg);color:var(--warn)}
-.charts{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-.chart svg{width:100%;height:auto;display:block}
-.chart .cap{font-size:11.5px;color:var(--muted);margin-top:6px}
-.scen{grid-template-columns:repeat(3,1fr)} @media(max-width:860px){.scen{grid-template-columns:1fr}}
-.scen .card.base{border:2px solid var(--brand)}
-.scen .big{font-size:28px;font-weight:700;margin:6px 0}
-.scen dl{display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-size:13.5px;margin:10px 0}
-.scen dt{color:var(--muted)} .scen dd{margin:0;font-weight:600;text-align:right}
-.note{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:10px 14px;font-size:13px;margin-bottom:14px}
-.agenda li{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--display);font-variation-settings:"wdth" 100;font-size:15.5px;line-height:1.5;font-feature-settings:"tnum" 1}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--m-t)}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.sheet{max-width:1320px;margin:0 auto;padding:0 var(--pad)}
+::selection{background:var(--y);color:#151515}
+
+/* ---------- Masthead ---------- */
+.mast{position:relative;padding:28px 0 0;border-bottom:1.5px solid var(--rule-strong);overflow:hidden}
+.mast::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(var(--ink) 1px,transparent 1.2px);background-size:9px 9px;
+  -webkit-mask-image:radial-gradient(120% 90% at 100% 0%,#000 0%,transparent 55%);mask-image:radial-gradient(120% 90% at 100% 0%,#000 0%,transparent 55%);opacity:.18}
+.mast-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;position:relative}
+.strip{display:flex;gap:0;height:12px}
+.strip i{display:block;width:22px;height:12px}
+.strip i:nth-child(1){background:var(--c)}.strip i:nth-child(2){background:var(--m)}.strip i:nth-child(3){background:var(--y)}.strip i:nth-child(4){background:var(--k)}
+.strip i:nth-child(5){background:color-mix(in srgb,var(--c) 40%,transparent)}.strip i:nth-child(6){background:color-mix(in srgb,var(--m) 40%,transparent)}.strip i:nth-child(7){background:color-mix(in srgb,var(--y) 50%,transparent)}.strip i:nth-child(8){background:color-mix(in srgb,var(--k) 30%,transparent)}
+.meta-r{text-align:right;color:var(--ink-2)}
+.meta-r b{color:var(--ink);font-weight:500}
+.pulse{display:inline-block;width:7px;height:7px;background:var(--c);margin-right:7px;vertical-align:1px;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+.title-row{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;position:relative;margin-top:22px}
+.wordmark{margin:0;font-weight:900;font-variation-settings:"wdth" 125;font-size:clamp(64px,13.5vw,196px);line-height:.78;letter-spacing:-.045em;text-transform:uppercase}
+.wordmark .dot{color:var(--m)}
+.kicker{display:flex;gap:28px;flex-wrap:wrap;margin:18px 0 20px;align-items:baseline}
+.kicker p{margin:0;max-width:520px;font-size:15px;color:var(--ink-2);font-variation-settings:"wdth" 92}
+.ed{font-weight:800;font-variation-settings:"wdth" 62;font-size:clamp(54px,7vw,104px);line-height:.8;letter-spacing:-.02em;text-align:right}
+.ed small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;font-weight:500;color:var(--ink-3);margin-bottom:8px}
+.dieline{position:absolute;right:-150px;top:58px;width:min(600px,50vw);height:auto;pointer-events:none;color:var(--ink);opacity:.22}
+.mast-top,.title-row,.kicker{z-index:1}
+.reg{position:absolute;width:22px;height:22px;color:var(--ink);opacity:.55}
+.reg.tl{left:-4px;top:6px}.reg.br{right:-4px;bottom:6px}
+
+/* ---------- Nav ---------- */
+nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--rule-strong)}
+nav .sheet{display:flex;overflow-x:auto;scrollbar-width:none}
+nav a{flex:0 0 auto;display:flex;gap:8px;align-items:baseline;padding:13px 18px 12px 0;margin-right:18px;text-decoration:none;color:var(--ink-2);font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid transparent;margin-bottom:-1px}
+nav a span{color:var(--ink-3);font-size:10px}
+nav a:hover{color:var(--ink)}
+nav a.on{color:var(--ink);border-bottom-color:var(--m)}
+nav a.on span{color:var(--m-t)}
+
+main{padding:0 0 72px;min-height:60vh}
+section.view{display:none;animation:in .35s ease both}
+section.view.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){section.view,.pulse{animation:none}}
+
+.sec-head{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:34px 0 18px;border-bottom:1px solid var(--rule)}
+.sec-head .mono{padding-top:9px;color:var(--ink-3)}
+.sec-head h2{margin:0;font-weight:800;font-variation-settings:"wdth" 112;font-size:clamp(30px,4vw,50px);line-height:.95;letter-spacing:-.03em}
+.sec-head p{margin:10px 0 0;max-width:720px;color:var(--ink-2)}
+@media(max-width:700px){.sec-head{grid-template-columns:1fr;gap:4px}.sec-head .mono{padding:0}}
+
+/* ---------- Lead ---------- */
+.lead{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:30px 0 30px;border-bottom:1px solid var(--rule)}
+.lead .mono{color:var(--m-t);padding-top:8px}
+.lead p{margin:0;font-size:clamp(20px,2.15vw,28px);line-height:1.28;font-weight:400;font-variation-settings:"wdth" 96;letter-spacing:-.012em;max-width:1020px;text-wrap:pretty}
+@media(max-width:700px){.lead{grid-template-columns:1fr;gap:8px}}
+
+/* ---------- KPI plates ---------- */
+.plates{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--rule)}
+.plate{position:relative;padding:20px 20px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);min-height:178px;display:flex;flex-direction:column}
+.plate:nth-child(4n){border-right:0}
+.plate:nth-last-child(-n+4){border-bottom:0}
+.plate .n{position:absolute;right:16px;top:18px;color:var(--ink-3)}
+.plate .l{color:var(--ink-2);padding-right:28px;min-height:30px}
+.plate .v{font-weight:800;font-variation-settings:"wdth" 118;font-size:clamp(32px,3.3vw,48px);line-height:1;letter-spacing:-.035em;margin:14px 0 8px;white-space:nowrap}
+.plate .d{font-size:13px;color:var(--ink-2);display:flex;gap:7px;align-items:baseline}
+.plate .d b{font-family:var(--mono);font-weight:600;font-size:12px}
+.plate .s{margin-top:auto;padding-top:12px;color:var(--ink-3);font-size:10px}
+.plate .s a{color:var(--ink-2)}
+.plate .d b{color:var(--ink)}
+.plate:hover{background:var(--paper-2)}
+@media(max-width:980px){.plates{grid-template-columns:repeat(2,1fr)}.plate:nth-child(4n){border-right:1px solid var(--rule)}.plate:nth-child(2n){border-right:0}.plate:nth-last-child(-n+4){border-bottom:1px solid var(--rule)}.plate:nth-last-child(-n+2){border-bottom:0}}
+@media(max-width:420px){.plate{padding:16px 14px;min-height:160px}.plate .v{font-size:28px}}
+
+/* ---------- Two-column body ---------- */
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:0;border-bottom:1px solid var(--rule)}
+.cols>div:first-child{padding-right:36px;border-right:1px solid var(--rule)}
+.cols>div:last-child{padding-left:28px}
+@media(max-width:980px){.cols{grid-template-columns:1fr}.cols>div:first-child{padding-right:0;border-right:0}.cols>div:last-child{padding-left:0;border-top:1px solid var(--rule)}}
+.block-h{display:flex;justify-content:space-between;align-items:baseline;padding:22px 0 10px;border-bottom:1.5px solid var(--rule-strong)}
+.block-h h3{margin:0;font-weight:800;font-variation-settings:"wdth" 110;font-size:19px;letter-spacing:-.015em;text-transform:uppercase}
+.block-h .mono{color:var(--ink-3)}
+
+/* ---------- News rows ---------- */
+.row{display:grid;grid-template-columns:86px minmax(0,1fr) 118px;gap:18px;padding:17px 0;border-bottom:1px solid var(--rule);align-items:start}
+.row:last-child{border-bottom:0}
+.row .dt{color:var(--ink-3);padding-top:4px;line-height:1.5}
+.row .dt b{display:block;color:var(--ink);font-family:var(--display);font-variation-settings:"wdth" 70;font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1;text-transform:none}
+.row h4{margin:0 0 5px;font-weight:650;font-variation-settings:"wdth" 98;font-size:17.5px;line-height:1.28;letter-spacing:-.008em;text-wrap:balance}
+.row h4 a{text-decoration:none}
+.row h4 a:hover{text-decoration:underline}
+.row p{margin:0;color:var(--ink-2);font-size:14px;max-width:760px}
+.row .src{margin-top:8px;color:var(--ink-3)}
+.row .src span+span::before{content:"/";margin:0 8px;color:var(--rule-strong);opacity:.4}
+.imp{display:flex;gap:8px;align-items:center;justify-content:flex-end;padding-top:5px;white-space:nowrap}
+.sw{display:inline-block;width:12px;height:12px;flex:0 0 12px}
+.sw.oportunidade{background:var(--c)} .sw.ameaca{background:var(--m)} .sw.atencao{background:var(--y);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)} .sw.neutro{background:transparent;box-shadow:inset 0 0 0 1.5px var(--ink)}
+@media(max-width:700px){.row{grid-template-columns:58px 1fr;gap:12px}.row .imp{grid-column:2;justify-content:flex-start;padding:0;order:-1}.row .dt b{font-size:22px}}
+.more{display:inline-block;margin:16px 0 26px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:1.5px solid var(--m);padding-bottom:2px}
+
+/* ---------- Signals (color proofs) ---------- */
+.proof{position:relative;padding:16px 0 16px 26px;border-bottom:1px solid var(--rule)}
+.proof:last-child{border-bottom:0}
+.proof::before{content:"";position:absolute;left:0;top:19px;width:12px;bottom:19px}
+.proof.oportunidade::before{background:var(--c)} .proof.ameaca::before{background:var(--m)} .proof.atencao::before{background:var(--y)}
+.proof .mono{color:var(--ink-3);display:block;margin-bottom:4px}
+.proof b{display:block;font-weight:750;font-variation-settings:"wdth" 104;font-size:16px;line-height:1.25;margin-bottom:5px;letter-spacing:-.01em}
+.proof span.t{font-size:13.5px;color:var(--ink-2);display:block}
+
+.agenda{list-style:none;margin:0 0 26px;padding:0}
+.agenda li{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:13.5px}
 .agenda li:last-child{border-bottom:0}
-.agenda .dt{font-weight:600;min-width:78px;color:var(--brand)}
-ul.clean{list-style:none;margin:0;padding:0}
-.search{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;margin-bottom:10px}
-footer{color:var(--muted);font-size:12px;text-align:center;padding:24px 0}
-.err{padding:30px;text-align:center;color:var(--muted)}
+.agenda .d{font-weight:800;font-variation-settings:"wdth" 70;font-size:20px;line-height:1;letter-spacing:-.01em}
+.agenda .d small{display:block;font-family:var(--mono);font-weight:500;font-size:10px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
+.agenda li.past{opacity:.45}
+
+/* ---------- Filters ---------- */
+.tools{display:grid;grid-template-columns:1fr auto;gap:12px 24px;padding:18px 0;border-bottom:1px solid var(--rule);align-items:center}
+@media(max-width:860px){.tools{grid-template-columns:1fr}}
+.search{width:100%;border:0;border-bottom:1.5px solid var(--rule-strong);background:transparent;color:var(--ink);font:500 18px var(--display);padding:8px 0;outline:none;border-radius:0}
+.search::placeholder{color:var(--ink-3)}
+.search:focus{border-bottom-color:var(--m)}
+.fgroup{display:flex;flex-wrap:wrap;gap:6px}
+.fbtn{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border:1px solid var(--rule);background:transparent;color:var(--ink-2);cursor:pointer;display:inline-flex;gap:7px;align-items:center;border-radius:0}
+.fbtn:hover{border-color:var(--ink);color:var(--ink)}
+.fbtn.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.fbtn:focus-visible,nav a:focus-visible,a:focus-visible{outline:2px solid var(--m);outline-offset:2px}
+.count{padding:12px 0 0;color:var(--ink-3)}
+
+/* ---------- Tables ---------- */
+.tbl{overflow-x:auto;margin-top:6px}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:760px}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--ink-3);text-align:left;padding:14px 14px 10px 0;border-bottom:1.5px solid var(--rule-strong)}
+td{padding:14px 14px 14px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+td.big{font-weight:800;font-variation-settings:"wdth" 110;font-size:17px;letter-spacing:-.015em;white-space:nowrap}
+td .tag{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+tr:hover td{background:var(--paper-2)}
+.prio{display:inline-flex;gap:7px;align-items:center;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em}
+
+/* ---------- Charts ---------- */
+.charts{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--rule)}
+.charts.two{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+.chart{padding:22px 22px 18px 0;border-right:1px solid var(--rule)}
+.chart+.chart{padding-left:22px}
+.chart:last-child{border-right:0}
+.chart h3{margin:0;font-weight:800;font-variation-settings:"wdth" 110;font-size:16px;text-transform:uppercase;letter-spacing:-.01em}
+.chart .now{font-weight:800;font-variation-settings:"wdth" 118;font-size:40px;letter-spacing:-.035em;line-height:1;margin:12px 0 4px}
+.chart .delta{font-family:var(--mono);font-size:11px;color:var(--ink-2)}
+.chart svg{width:100%;height:auto;display:block;margin-top:14px;overflow:visible}
+.chart .cap{margin-top:10px;color:var(--ink-3);font-size:10px}
+@media(max-width:980px){.charts{grid-template-columns:repeat(2,1fr)}.chart:nth-child(2n){border-right:0}.chart:nth-child(n+3){border-top:1px solid var(--rule)}.chart:nth-child(odd){padding-left:0}.charts.two{grid-template-columns:1fr}.charts.two .chart{border-right:0;padding-left:0}}
+@media(max-width:560px){.charts{grid-template-columns:1fr}.chart,.chart+.chart{padding-left:0;border-right:0}.chart+.chart{border-top:1px solid var(--rule)}}
+
+/* ---------- Scenarios ---------- */
+.warn{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--rule);font-size:14px;color:var(--ink-2)}
+.warn .mono{color:var(--ink);background:var(--y);color:#151515;padding:3px 7px;align-self:start;justify-self:start}
+@media(max-width:700px){.warn{grid-template-columns:1fr;gap:8px}}
+.scen{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--rule)}
+.sc{padding:26px 26px 26px 0;border-right:1px solid var(--rule);position:relative}
+.sc+.sc{padding-left:26px}
+.sc:last-child{border-right:0}
+.sc .bar{height:10px;margin-bottom:22px}
+.sc.c0 .bar{background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 6px)}
+.sc.c1 .bar{background:var(--m)}
+.sc.c2 .bar{background:var(--c)}
+.sc h3{margin:0;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.sc .big{font-weight:900;font-variation-settings:"wdth" 120;font-size:clamp(40px,4.4vw,64px);line-height:.95;letter-spacing:-.04em;margin:10px 0 2px}
+.sc .unit{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.05em;text-transform:uppercase}
+.sc dl{display:grid;grid-template-columns:1fr auto;margin:22px 0 18px;border-top:1px solid var(--rule)}
+.sc dt,.sc dd{padding:10px 0;border-bottom:1px solid var(--rule);font-size:13.5px}
+.sc dt{color:var(--ink-2)} .sc dd{margin:0;font-weight:750;font-variation-settings:"wdth" 110;text-align:right}
+.sc p{margin:0;font-size:13.5px;color:var(--ink-2)}
+.sc.c1 .flag{position:absolute;right:20px;top:26px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:var(--m);color:#fff;padding:3px 7px}
+@media(max-width:860px){.scen{grid-template-columns:1fr}.sc,.sc+.sc{padding-left:0;border-right:0}.sc+.sc{border-top:1px solid var(--rule)}.sc.c1 .flag{right:0}}
+
+/* ---------- Method ---------- */
+.method{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--rule)}
+.method>div{padding:24px 26px 24px 0;border-right:1px solid var(--rule)}
+.method>div+div{padding-left:26px}
+.method>div:last-child{border-right:0}
+.method h3{margin:0 0 10px;font-weight:800;font-variation-settings:"wdth" 110;font-size:16px;text-transform:uppercase}
+.method p{margin:0 0 10px;font-size:14px;color:var(--ink-2)}
+.legend{display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.legend span{display:flex;gap:10px;align-items:center;font-size:13.5px}
+@media(max-width:860px){.method{grid-template-columns:1fr}.method>div,.method>div+div{padding-left:0;border-right:0}.method>div+div{border-top:1px solid var(--rule)}}
+.srcs{columns:2 360px;column-gap:40px;padding:18px 0;margin:0;list-style:none;counter-reset:s}
+.srcs li{break-inside:avoid;padding:8px 0 8px 40px;position:relative;border-bottom:1px solid var(--rule);font-size:13.5px;counter-increment:s}
+.srcs li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:10px;font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.srcs li span{color:var(--ink-3)}
+
+footer{border-top:1.5px solid var(--rule-strong);padding:18px 0 34px}
+footer .sheet{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;color:var(--ink-3)}
+.err{padding:60px 0;color:var(--ink-2);font-size:18px}
+@media(max-width:700px){
+  .dieline{display:none}
+  .mast-top{flex-direction:column;gap:14px}
+  .meta-r{text-align:left;font-size:10px}
+  .title-row{grid-template-columns:1fr;gap:10px;margin-top:18px}
+  .wordmark{font-size:18.5vw}
+  .ed{text-align:left;font-size:46px;display:flex;gap:10px;align-items:baseline}
+  .ed small{margin:0}
+  .reg{display:none}
+  .kicker{gap:10px;margin:14px 0 18px}
+}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <div class="top">
-      <div class="brand">
-        <div class="logo">PF</div>
-        <div>
-          <h1>Radar de Mercado ProFood</h1>
-          <div class="sub">Foodservice, embalagens de papel-cartão e macroeconomia · planejamento comercial 2027</div>
-        </div>
+<header class="mast">
+  <div class="sheet" style="position:relative">
+    <svg class="reg tl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="6"/><path d="M12 0v24M0 12h24"/></svg>
+    <svg class="dieline" viewBox="0 0 560 340" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+      <!-- planificação abstrata de uma caixa de hambúrguer: corte contínuo, dobra tracejada -->
+      <path d="M190 40h180v70l40 10v110l-40 10v70H190v-70l-40-10V120l40-10z"/>
+      <path d="M190 110h180M190 230h180M190 110v120M370 110v120" stroke-dasharray="5 5"/>
+      <path d="M190 40c0-22 18-30 90-30s90 8 90 30" />
+      <path d="M150 120h-60l-20 20v60l20 20h60M410 120h60l20 20v60l-20 20h-60"/>
+      <path d="M150 120v100M410 120v100" stroke-dasharray="5 5"/>
+      <path d="M190 300l-24 30h228l-24-30"/>
+      <path d="M260 150a20 20 0 1 0 40 0a20 20 0 1 0 -40 0" stroke-dasharray="2 4"/>
+      <path d="M240 60h80M250 72h60" opacity=".6"/>
+    </svg>
+    <div class="mast-top">
+      <div>
+        <div class="strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="mono" style="margin-top:12px;color:var(--ink-2)">ProFood Embalagens · Tuicial Indústria Gráfica</div>
       </div>
-      <div class="stamp"><span class="live"></span>Atualizado em <b id="upd">—</b><br><span id="edicao"></span></div>
+      <div class="meta-r mono"><span class="pulse"></span>Atualizado <b id="upd">—</b><br><span id="next"></span></div>
     </div>
-    <nav id="nav">
-      <a href="#hoje">Hoje</a>
-      <a href="#noticias">Notícias</a>
-      <a href="#mercado">Mercado</a>
-      <a href="#redes">Redes & oportunidades</a>
-      <a href="#macro">Macro 2027</a>
-      <a href="#cenarios">Cenários 2027</a>
-      <a href="#fontes">Fontes & método</a>
-    </nav>
+    <div class="title-row">
+      <h1 class="wordmark">Radar<span class="dot">.</span></h1>
+      <div class="ed"><small>Edição</small><span id="ed">—</span></div>
+    </div>
+    <div class="kicker">
+      <span class="mono" style="color:var(--m-t)">Inteligência de mercado · 2027</span>
+      <p>Foodservice, embalagens de papel-cartão e macroeconomia, lidos todos os dias pelo que importa para vender caixa, berço e combo.</p>
+    </div>
+    <svg class="reg br" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="6"/><path d="M12 0v24M0 12h24"/></svg>
   </div>
 </header>
 
-<main class="wrap" id="app"><div class="err">Carregando dados…</div></main>
-<footer class="wrap">Radar de Mercado ProFood / Tuicial · conteúdo resumido de fontes públicas, com links para os originais · estimativas sinalizadas como modelagem</footer>
+<nav aria-label="Seções">
+  <div class="sheet" id="nav">
+    <a href="#hoje"><span>01</span>Hoje</a>
+    <a href="#noticias"><span>02</span>Notícias</a>
+    <a href="#mercado"><span>03</span>Mercado</a>
+    <a href="#redes"><span>04</span>Redes</a>
+    <a href="#macro"><span>05</span>Macro 2027</a>
+    <a href="#cenarios"><span>06</span>Cenários</a>
+    <a href="#fontes"><span>07</span>Fontes & método</a>
+  </div>
+</nav>
+
+<main class="sheet" id="app"><div class="err">Carregando a edição de hoje…</div></main>
+
+<footer>
+  <div class="sheet mono">
+    <div class="strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <span>Resumos próprios de fontes públicas, com link para o original · estimativas sempre sinalizadas como modelagem</span>
+    <span>Cascavel · PR</span>
+  </div>
+</footer>
 
 <script>
-const fmtD = s => { const d = new Date(s.length<=10 ? s+'T12:00:00' : s); return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric'}).replace('.',''); };
-const fmtShort = s => new Date(s+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});
-const esc = s => String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const impLabel = {oportunidade:'Oportunidade',ameaca:'Ameaça',atencao:'Atenção',neutro:'Contexto'};
-const arrow = t => t==='up'?'▲':t==='down'?'▼':'●';
-let DATA, filtroCat='Todas', filtroImp='Todos', busca='';
+const MES=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+const D=s=>new Date((s.length<=10?s+'T12:00:00':s));
+const fmtD=s=>{const d=D(s);return `${String(d.getDate()).padStart(2,'0')} ${MES[d.getMonth()]} ${d.getFullYear()}`};
+const dd=s=>String(D(s).getDate()).padStart(2,'0');
+const mm=s=>`${MES[D(s).getMonth()]} ${String(D(s).getFullYear()).slice(2)}`;
+const fmtShort=s=>{const d=D(s);return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}`};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const num=(v,d=2)=>Number(v).toFixed(d).replace('.',',');
+const IMP={oportunidade:'Oportunidade',ameaca:'Ameaça',atencao:'Atenção',neutro:'Contexto'};
+const ARW={up:'↑',down:'↓',flat:'→'};
+let DATA,fCat='Todas',fImp='Todos',q='';
 
-function newsItem(n){
-  return `<article class="card item"><div class="meta"><span>${fmtD(n.data)}</span><span class="tag cat">${esc(n.categoria)}</span><span class="tag t-${n.impacto}">${impLabel[n.impacto]||n.impacto}</span><span>· ${esc(n.fonte)}</span></div>
-  <h4><a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.titulo)}</a></h4><p>${esc(n.resumo)}</p></article>`;
-}
+const row=n=>`<article class="row">
+  <div class="dt mono"><b>${dd(n.data)}</b>${mm(n.data)}</div>
+  <div><h4><a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.titulo)}</a></h4><p>${esc(n.resumo)}</p>
+  <div class="src mono"><span>${esc(n.categoria)}</span><span>${esc(n.fonte)}</span></div></div>
+  <div class="imp mono"><i class="sw ${n.impacto}"></i>${IMP[n.impacto]||esc(n.impacto)}</div></article>`;
 
-function lineChart({labels, values, color, unit='', decimals=2}){
-  const W=300,H=150,p={l:36,r:22,t:22,b:24};
-  const min=Math.min(...values), max=Math.max(...values), pad=(max-min)*0.25||Math.abs(max)*0.05||1;
-  const lo=min-pad, hi=max+pad;
-  const x=i=>p.l+(labels.length===1?0:i*(W-p.l-p.r)/(labels.length-1));
-  const y=v=>p.t+(hi-v)*(H-p.t-p.b)/(hi-lo);
-  const pts=values.map((v,i)=>`${x(i)},${y(v)}`).join(' ');
-  const ticks=[lo+ (hi-lo)*.15, (lo+hi)/2, hi-(hi-lo)*.15];
-  return `<svg viewBox="0 0 ${W} ${H}" role="img">
-   ${ticks.map(t=>`<line x1="${p.l}" x2="${W-p.r}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)"/><text x="${p.l-6}" y="${y(t)+4}" font-size="9.5" text-anchor="end" fill="var(--muted)">${t.toFixed(decimals).replace('.',',')}</text>`).join('')}
-   <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-   ${values.map((v,i)=>`<circle cx="${x(i)}" cy="${y(v)}" r="${i===values.length-1?4:2.6}" fill="${color}"/>`).join('')}
-   <text x="${x(values.length-1)}" y="${y(values[values.length-1])-10}" font-size="11" font-weight="700" text-anchor="end" fill="${color}">${values[values.length-1].toFixed(decimals).replace('.',',')}${unit}</text>
-   ${labels.map((l,i)=>`<text x="${x(i)}" y="${H-6}" font-size="9.5" text-anchor="middle" fill="var(--muted)">${esc(l)}</text>`).join('')}
+function line({labels,values,color,dash=false,dec=2,unit=''}){
+  const W=320,H=120,p={l:0,r:46,t:10,b:22};
+  const mn=Math.min(...values),mx=Math.max(...values),pad=(mx-mn)*.35||Math.abs(mx)*.04||1,lo=mn-pad,hi=mx+pad;
+  const x=i=>p.l+(labels.length<2?0:i*(W-p.l-p.r)/(labels.length-1)),y=v=>p.t+(hi-v)*(H-p.t-p.b)/(hi-lo);
+  const pts=values.map((v,i)=>`${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  const last=values.length-1;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="série">
+   <line x1="0" x2="${W-p.r}" y1="${H-p.b}" y2="${H-p.b}" stroke="var(--rule-strong)"/>
+   <line x1="0" x2="${W-p.r}" y1="${y(mx)}" y2="${y(mx)}" stroke="var(--rule)" stroke-dasharray="2 3"/>
+   <line x1="0" x2="${W-p.r}" y1="${y(mn)}" y2="${y(mn)}" stroke="var(--rule)" stroke-dasharray="2 3"/>
+   <text x="${W-p.r+6}" y="${y(mx)+3.5}" font-family="Geist Mono,monospace" font-size="9.5" fill="var(--ink-3)">${num(mx,dec)}</text>
+   <text x="${W-p.r+6}" y="${y(mn)+3.5}" font-family="Geist Mono,monospace" font-size="9.5" fill="var(--ink-3)">${num(mn,dec)}</text>
+   <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.25" ${dash?'stroke-dasharray="6 4"':''} stroke-linejoin="miter"/>
+   ${values.map((v,i)=>`<rect x="${x(i)-(i===last?4:2.5)}" y="${y(v)-(i===last?4:2.5)}" width="${i===last?8:5}" height="${i===last?8:5}" fill="${i===last?color:'var(--paper)'}" stroke="${color}" stroke-width="1.5"/>`).join('')}
+   ${labels.map((l,i)=>`<text x="${x(i)}" y="${H-6}" font-family="Geist Mono,monospace" font-size="9.5" fill="var(--ink-3)" text-anchor="${i===0?'start':i===last?'end':'middle'}">${esc(l)}</text>`).join('')}
   </svg>`;
 }
-function barChart({labels, values, color}){
-  const W=300,H=150,p={l:10,r:10,t:18,b:24}; const max=Math.max(...values,0)*1.15||1;
-  const bw=(W-p.l-p.r)/labels.length;
-  return `<svg viewBox="0 0 ${W} ${H}" role="img">${values.map((v,i)=>{const h=(H-p.t-p.b)*Math.max(v,0)/max;const x=p.l+i*bw+bw*.2;return `<rect x="${x}" y="${H-p.b-h}" width="${bw*.6}" height="${h}" rx="4" fill="${color}"/><text x="${x+bw*.3}" y="${H-p.b-h-5}" font-size="10.5" font-weight="600" text-anchor="middle" fill="var(--ink)">${String(v).replace('.',',')}%</text><text x="${x+bw*.3}" y="${H-7}" font-size="10" text-anchor="middle" fill="var(--muted)">${esc(labels[i])}</text>`}).join('')}</svg>`;
+function bars({labels,values}){
+  const W=640,H=170,p={t:26,b:24};const mx=Math.max(...values)*1.1||1;const bw=W/labels.length;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="barras">
+   <defs><pattern id="ht" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.6" fill="var(--c)"/></pattern></defs>
+   <line x1="0" x2="${W}" y1="${H-p.b}" y2="${H-p.b}" stroke="var(--rule-strong)"/>
+   ${values.map((v,i)=>{const h=(H-p.t-p.b)*v/mx,xx=i*bw+bw*.14,w=bw*.72,best=v===Math.max(...values);return `<rect x="${xx}" y="${H-p.b-h}" width="${w}" height="${h}" fill="${best?'var(--c)':'url(#ht)'}"/>
+   <text x="${xx}" y="${H-p.b-h-8}" font-family="Archivo,sans-serif" font-weight="800" font-size="17" fill="var(--ink)">${num(v,1)}%</text>
+   <text x="${xx}" y="${H-6}" font-family="Geist Mono,monospace" font-size="10" fill="var(--ink-3)">${esc(labels[i]).toUpperCase()}</text>`}).join('')}
+  </svg>`;
 }
+const head=(n,t,p)=>`<div class="sec-head"><span class="mono">§ ${n}</span><div><h2>${t}</h2>${p?`<p>${p}</p>`:''}</div></div>`;
 
 function render(){
-  const d=DATA, m=d.meta;
-  document.getElementById('upd').textContent = new Date(m.atualizado_em).toLocaleString('pt-BR',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
-  document.getElementById('edicao').textContent = `Edição nº ${m.edicao} · ${m.proximas_atualizacoes}`;
+  const d=DATA,m=d.meta;
+  document.getElementById('upd').textContent=new Date(m.atualizado_em).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  document.getElementById('next').textContent=m.proximas_atualizacoes||'';
+  document.getElementById('ed').textContent='Nº '+String(m.edicao).padStart(3,'0');
   const news=[...d.noticias].sort((a,b)=>b.data.localeCompare(a.data));
   const cats=['Todas',...new Set(news.map(n=>n.categoria))];
-  const f=d.series.focus_2027, idf=d.series.idf_2026;
-  const fl=f.datas.map(fmtShort);
+  const f=d.series.focus_2027,idf=d.series.idf_2026,fl=f.datas.map(fmtShort);
+  const today=new Date().toISOString().slice(0,10);
+  const ag=[...d.agenda].sort((a,b)=>a.data.localeCompare(b.data));
+  const delta=(arr,dec=2,unit='')=>{if(arr.length<2)return '';const v=arr[arr.length-1]-arr[0];return `${v>0?'+':''}${num(v,dec)}${unit} desde ${fl[0]}`};
+  const srcs=[...new Map([...d.kpis,...d.mercado,...d.noticias,...d.redes].map(x=>[x.url,x])).values()];
 
-  document.getElementById('app').innerHTML = `
+  document.getElementById('app').innerHTML=`
   <section class="view" id="v-hoje">
-    <div class="card summary"><h3>Resumo do dia</h3><p>${esc(m.resumo_do_dia)}</p></div>
-    <div class="grid kpis">${d.kpis.map(k=>`<div class="card kpi"><div class="l">${esc(k.rotulo)}</div><div class="v">${esc(k.valor)}</div><div class="d ${k.tendencia}">${arrow(k.tendencia)} ${esc(k.variacao)}</div><div class="s"><a href="${esc(k.url)}" target="_blank" rel="noopener">${esc(k.fonte)}</a> · ${esc(k.ref)} · ${esc(k.tipo)}</div></div>`).join('')}</div>
-    <div class="grid two">
-      <div><h3>Últimas notícias</h3><div class="news">${news.slice(0,6).map(newsItem).join('')}</div><p><a href="#noticias">Ver todas as notícias →</a></p></div>
-      <div>
-        <h3>Sinais para a ProFood</h3>${d.sinais.map(s=>`<div class="sig ${s.tipo}"><b>${esc(s.titulo)}</b><span>${esc(s.texto)}</span></div>`).join('')}
-        <div class="card" style="margin-top:14px"><h3>Agenda</h3><ul class="clean agenda">${[...d.agenda].sort((a,b)=>a.data.localeCompare(b.data)).map(a=>`<li><span class="dt">${fmtD(a.data)}</span><span>${esc(a.evento)}</span></li>`).join('')}</ul></div>
+    <div class="lead"><span class="mono">Leitura do dia</span><p>${esc(m.resumo_do_dia)}</p></div>
+    <div class="plates">${d.kpis.map((k,i)=>`<div class="plate"><span class="n mono">${String(i+1).padStart(2,'0')}</span>
+      <div class="l mono">${esc(k.rotulo)}</div><div class="v">${esc(k.valor)}</div>
+      <div class="d ${k.tendencia}"><b>${ARW[k.tendencia]||'→'}</b>${esc(k.variacao)}</div>
+      <div class="s mono"><a href="${esc(k.url)}" target="_blank" rel="noopener">${esc(k.fonte)}</a> · ${esc(k.ref)} · ${esc(k.tipo)}</div></div>`).join('')}</div>
+    <div class="cols">
+      <div><div class="block-h"><h3>Últimas</h3><span class="mono">${news.length} notícias no arquivo</span></div>
+        ${news.slice(0,6).map(row).join('')}
+        <a class="more" href="#noticias">Arquivo completo →</a></div>
+      <div><div class="block-h"><h3>Sinais</h3><span class="mono">para a ProFood</span></div>
+        ${d.sinais.map(s=>`<div class="proof ${s.tipo}"><span class="mono">${IMP[s.tipo]||''}</span><b>${esc(s.titulo)}</b><span class="t">${esc(s.texto)}</span></div>`).join('')}
+        <div class="block-h"><h3>Agenda</h3><span class="mono">próximos marcos</span></div>
+        <ul class="agenda">${ag.map(a=>`<li class="${a.data<today?'past':''}"><span class="d">${dd(a.data)}<small>${mm(a.data)}</small></span><span>${esc(a.evento)}</span></li>`).join('')}</ul>
       </div>
     </div>
   </section>
 
   <section class="view" id="v-noticias">
-    <h2>Notícias do mercado</h2><p class="lead">Foodservice, delivery, franquias, papel e celulose, embalagens, tributos e macroeconomia — resumidas e classificadas pelo impacto para a venda de embalagens de papel-cartão.</p>
-    <input class="search" id="q" placeholder="Buscar por rede, tema, fonte…" value="${esc(busca)}">
-    <div class="filters" id="fc">${cats.map(c=>`<button class="chip ${c===filtroCat?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('')}</div>
-    <div class="filters" id="fi">${['Todos','oportunidade','atencao','ameaca','neutro'].map(c=>`<button class="chip ${c===filtroImp?'on':''}" data-i="${c}">${c==='Todos'?'Todos os impactos':impLabel[c]}</button>`).join('')}</div>
-    <div class="news" id="nl"></div>
+    ${head('02','Arquivo de notícias','Foodservice, delivery, franquias, papel e celulose, embalagens, tributos e macro — resumidos com palavras próprias e marcados pelo impacto na venda de papel-cartão.')}
+    <div class="tools"><input class="search" id="q" placeholder="Buscar rede, tema ou fonte…" value="${esc(q)}" aria-label="Buscar notícias">
+      <div class="fgroup" id="fi">${['Todos','oportunidade','atencao','ameaca','neutro'].map(c=>`<button class="fbtn ${c===fImp?'on':''}" data-i="${c}">${c==='Todos'?'Todo impacto':`<i class="sw ${c}"></i>${IMP[c]}`}</button>`).join('')}</div></div>
+    <div class="tools" style="grid-template-columns:1fr"><div class="fgroup" id="fc">${cats.map(c=>`<button class="fbtn ${c===fCat?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('')}</div></div>
+    <div class="count mono" id="cnt"></div>
+    <div id="nl"></div>
   </section>
 
   <section class="view" id="v-mercado">
-    <h2>Dimensionamento do mercado</h2><p class="lead">Números de referência do foodservice e das embalagens, com fonte, ano e tipo de dado. Faturamento do setor, de redes e de embalagens são métricas diferentes — não some uma com a outra.</p>
-    <div class="card tbl"><table><thead><tr><th>Indicador</th><th>Valor</th><th>Fonte</th><th>Referência</th><th>Tipo</th></tr></thead><tbody>
-    ${d.mercado.map(r=>`<tr><td>${esc(r.indicador)}</td><td><b>${esc(r.valor)}</b></td><td><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.fonte)}</a></td><td>${esc(r.ano)}</td><td><span class="pill">${esc(r.tipo)}</span></td></tr>`).join('')}
+    ${head('03','Tamanho do mercado','Números de referência com fonte, ano e natureza do dado. Gasto do consumidor no foodservice, vendas da indústria ao canal e mercado de embalagens são grandezas diferentes — não se somam.')}
+    <div class="tbl"><table><thead><tr><th>Indicador</th><th>Valor</th><th>Fonte</th><th>Referência</th><th>Natureza</th></tr></thead><tbody>
+    ${d.mercado.map(r=>`<tr><td>${esc(r.indicador)}</td><td class="big">${esc(r.valor)}</td><td><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.fonte)}</a></td><td class="mono" style="font-size:11px">${esc(r.ano)}</td><td><span class="tag">${esc(r.tipo)}</span></td></tr>`).join('')}
     </tbody></table></div>
-    <div class="grid charts" style="margin-top:16px"><div class="card chart"><h3>${esc(idf.titulo)}</h3>${barChart({labels:idf.meses,values:idf.valores,color:'var(--brand-2)'})}<div class="cap">Fonte: ${esc(idf.fonte)} · amostra de grandes redes associadas</div></div></div>
+    <div class="charts two" style="margin-top:28px;border-top:1.5px solid var(--rule-strong)">
+      <div class="chart"><h3>${esc(idf.titulo)}</h3>${bars({labels:idf.meses,values:idf.valores})}<div class="cap mono">${esc(idf.fonte)} · amostra de grandes redes associadas</div></div>
+      <div class="chart"><h3>Como ler</h3><p style="font-size:14px;color:var(--ink-2);margin:12px 0 0">O IDF mede vendas nominais das grandes redes associadas ao IFB. Ele antecipa o humor das redes organizadas — exatamente o perfil que compra embalagem personalizada em volume — mas não representa os estabelecimentos independentes.</p></div>
+    </div>
   </section>
 
   <section class="view" id="v-redes">
-    <h2>Redes em expansão</h2><p class="lead">Redes com plano público de abertura de lojas — candidatas a prospecção de embalagens personalizadas. A prioridade é uma avaliação inicial (expansão, categoria, volume de delivery) e deve ser validada pelo comercial.</p>
-    <div class="card tbl"><table><thead><tr><th>Rede</th><th>Segmento</th><th>Unidades</th><th>Meta</th><th>Região</th><th>Prioridade</th><th>Observação</th></tr></thead><tbody>
-    ${d.redes.map(r=>`<tr><td><a href="${esc(r.url)}" target="_blank" rel="noopener"><b>${esc(r.nome)}</b></a></td><td>${esc(r.segmento)}</td><td>${esc(r.unidades)}</td><td>${esc(r.meta)}</td><td>${esc(r.regiao)}</td><td><span class="pill p-${esc(r.prioridade)}">${esc(r.prioridade)}</span></td><td>${esc(r.obs)}</td></tr>`).join('')}
+    ${head('04','Redes em expansão','Redes com plano público de abertura de lojas — candidatas a prospecção de embalagem personalizada. Prioridade é uma leitura inicial; valide com o comercial.')}
+    <div class="tbl"><table><thead><tr><th>Rede</th><th>Segmento</th><th>Unidades</th><th>Meta</th><th>Região</th><th>Prioridade</th><th>Leitura</th></tr></thead><tbody>
+    ${d.redes.map(r=>`<tr><td class="big"><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.nome)}</a></td><td>${esc(r.segmento)}</td><td class="mono" style="font-size:12px">${esc(r.unidades)}</td><td>${esc(r.meta)}</td><td>${esc(r.regiao)}</td><td><span class="prio"><i class="sw ${r.prioridade==='Alta'?'oportunidade':r.prioridade==='Média'?'atencao':'neutro'}"></i>${esc(r.prioridade)}</span></td><td style="color:var(--ink-2)">${esc(r.obs)}</td></tr>`).join('')}
     </tbody></table></div>
   </section>
 
   <section class="view" id="v-macro">
-    <h2>Macroeconomia para 2027</h2><p class="lead">Evolução das expectativas do Boletim Focus para 2027. Inflação e câmbio afetam o custo do papel-cartão; juros e PIB afetam a expansão das redes.</p>
-    <div class="grid charts">
-      <div class="card chart"><h3>IPCA 2027 (%)</h3>${lineChart({labels:fl,values:f.ipca,color:'var(--risk)',unit:'%'})}<div class="cap">${esc(f.fonte)}</div></div>
-      <div class="card chart"><h3>PIB 2027 (%)</h3>${lineChart({labels:fl,values:f.pib,color:'var(--brand-2)',unit:'%'})}<div class="cap">${esc(f.fonte)}</div></div>
-      <div class="card chart"><h3>Selic fim de 2027 (%)</h3>${lineChart({labels:fl,values:f.selic,color:'var(--warn)',unit:'%'})}<div class="cap">${esc(f.fonte)}</div></div>
-      <div class="card chart"><h3>Dólar fim de 2027 (R$)</h3>${lineChart({labels:fl,values:f.dolar,color:'var(--neu)'})}<div class="cap">${esc(f.fonte)} · a coleta de 26/out é anterior à alta do câmbio</div></div>
+    ${head('05','Macro para 2027','Como o mercado vem revisando 2027 no Boletim Focus. Câmbio e inflação mexem no custo do papel-cartão; juros e PIB mexem no ritmo de abertura de lojas.')}
+    <div class="charts">
+      <div class="chart"><h3>IPCA 2027</h3><div class="now">${num(f.ipca.at(-1))}%</div><div class="delta">${delta(f.ipca,2,' p.p.')}</div>${line({labels:fl,values:f.ipca,color:'var(--m)'})}</div>
+      <div class="chart"><h3>PIB 2027</h3><div class="now">${num(f.pib.at(-1))}%</div><div class="delta">${delta(f.pib,2,' p.p.')}</div>${line({labels:fl,values:f.pib,color:'var(--c)'})}</div>
+      <div class="chart"><h3>Selic dez/27</h3><div class="now">${num(f.selic.at(-1))}%</div><div class="delta">${delta(f.selic,2,' p.p.')}</div>${line({labels:fl,values:f.selic,color:'var(--ink)'})}</div>
+      <div class="chart"><h3>Dólar dez/27</h3><div class="now">R$ ${num(f.dolar.at(-1))}</div><div class="delta">${delta(f.dolar)}</div>${line({labels:fl,values:f.dolar,color:'var(--ink)',dash:true})}</div>
     </div>
-    <h3 style="margin-top:20px">Notícias de macro e tributos</h3>
-    <div class="news">${news.filter(n=>/Macro|Regula/.test(n.categoria)).map(newsItem).join('')}</div>
+    <div class="cap mono" style="padding:10px 0;color:var(--ink-3)">${esc(f.fonte)} · medianas semanais</div>
+    <div class="block-h"><h3>Macro & tributos</h3><span class="mono">notícias relacionadas</span></div>
+    ${news.filter(n=>/Macro|Regula/.test(n.categoria)).map(row).join('')}
   </section>
 
   <section class="view" id="v-cenarios">
-    <h2>Cenários 2027</h2><p class="lead">Projeção do faturamento do foodservice e da demanda por embalagens em três cenários.</p>
-    <div class="note">${esc(d.cenarios.nota)}</div>
-    <div class="grid scen">${d.cenarios.itens.map(c=>`<div class="card ${c.nome==='Base'?'base':''}"><h3>${esc(c.nome)}</h3><div class="sub">Foodservice 2027</div><div class="big">R$ ${c.fs_2027.toFixed(1).replace('.',',')} bi</div>
-      <dl><dt>Crescimento do foodservice</dt><dd>${c.cresc_fs>0?'+':''}${String(c.cresc_fs).replace('.',',')}%</dd><dt>Produção total de embalagens</dt><dd>${c.cresc_embal>0?'+':''}${String(c.cresc_embal).replace('.',',')}%</dd><dt>Demanda de papel-cartão p/ foodservice</dt><dd>${c.cresc_cartao>0?'+':''}${String(c.cresc_cartao).replace('.',',')}%</dd></dl>
-      <p class="sub" style="margin:0">${esc(c.premissas)}</p></div>`).join('')}</div>
+    ${head('06','Três cenários para 2027','Faturamento do foodservice e demanda de embalagens sob hipóteses diferentes de câmbio, juros e consumo.')}
+    <div class="warn"><span class="mono">Modelagem própria</span><span>${esc(d.cenarios.nota)}</span></div>
+    <div class="scen">${d.cenarios.itens.map((c,i)=>`<div class="sc c${i}">${c.nome==='Base'?'<span class="flag">Referência</span>':''}<div class="bar"></div><h3>${esc(c.nome)}</h3>
+      <div class="big">${num(c.fs_2027,1)}</div><div class="unit">R$ bilhões · foodservice 2027</div>
+      <dl><dt>Crescimento do foodservice</dt><dd>${c.cresc_fs>0?'+':''}${num(c.cresc_fs,1)}%</dd><dt>Produção total de embalagens</dt><dd>${c.cresc_embal>0?'+':''}${num(c.cresc_embal,1)}%</dd><dt>Papel-cartão p/ foodservice</dt><dd>${c.cresc_cartao>0?'+':''}${num(c.cresc_cartao,1)}%</dd></dl>
+      <p>${esc(c.premissas)}</p></div>`).join('')}</div>
   </section>
 
   <section class="view" id="v-fontes">
-    <h2>Fontes & metodologia</h2>
-    <div class="grid two">
-      <div class="card"><h3>Como o radar funciona</h3>
-        <p>Todo dia uma rotina automática pesquisa as fontes prioritárias do projeto (ABF, ABRE, IFB, Abrasel, IBGE, Banco Central, Klabin/Suzano e imprensa econômica), resume as novidades com palavras próprias, classifica o impacto para a ProFood e atualiza os indicadores.</p>
-        <p><b>Tipos de dado:</b> <span class="pill">Dado oficial</span> órgãos públicos · <span class="pill">Dado setorial</span> associações e institutos · <span class="pill">Projeção de terceiros</span> entidades e mercado · <b>Modelagem própria</b> só nos cenários, sempre sinalizada.</p>
-        <p><b>Cuidados:</b> o IDF/IFB reflete grandes redes associadas, não o mercado todo; faturamento do foodservice (gasto do consumidor) ≠ vendas da indústria ao canal ≠ mercado de embalagens.</p>
-      </div>
-      <div class="card"><h3>Histórico de atualizações</h3><ul class="clean agenda">${[...d.historico].reverse().slice(0,30).map(h=>`<li><span class="dt">${fmtD(h.data)}</span><span>${esc(h.nota)}</span></li>`).join('')}</ul></div>
+    ${head('07','Fontes & método','')}
+    <div class="method">
+      <div><h3>Como funciona</h3><p>Todo dia, antes das 7h, uma rotina pesquisa as fontes prioritárias do projeto (ABF, ABRE, IFB, Abrasel, IBGE, Banco Central, Klabin/Suzano e imprensa econômica), resume as novidades com palavras próprias, marca o impacto e atualiza indicadores e séries.</p></div>
+      <div><h3>Código de impacto</h3><div class="legend">
+        <span><i class="sw oportunidade"></i>Ciano — oportunidade de venda</span><span><i class="sw atencao"></i>Amarelo — atenção, acompanhar</span><span><i class="sw ameaca"></i>Magenta — ameaça a preço ou volume</span><span><i class="sw neutro"></i>Preto — contexto</span></div></div>
+      <div><h3>Cuidados</h3><p>IDF/IFB reflete grandes redes associadas, não o mercado todo. Faturamento do foodservice (gasto do consumidor) ≠ vendas da indústria ao canal ≠ mercado de embalagens. Cenários são modelagem.</p></div>
     </div>
-    <h3 style="margin-top:18px">Todas as fontes citadas</h3>
-    <div class="card"><ul>${[...new Map([...d.kpis,...d.mercado,...d.noticias,...d.redes].map(x=>[x.url,x])).values()].map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.titulo||x.indicador||x.rotulo||x.nome)}</a> — ${esc(x.fonte||'')}</li>`).join('')}</ul></div>
+    <div class="block-h"><h3>Histórico de edições</h3><span class="mono">${d.historico.length} registros</span></div>
+    <ul class="agenda">${[...d.historico].reverse().slice(0,30).map(h=>`<li><span class="d">${dd(h.data)}<small>${mm(h.data)}</small></span><span>${esc(h.nota)}</span></li>`).join('')}</ul>
+    <div class="block-h"><h3>Fontes citadas</h3><span class="mono">${srcs.length} links</span></div>
+    <ol class="srcs">${srcs.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.titulo||x.indicador||x.rotulo||x.nome)}</a> <span>— ${esc(x.fonte||'')}</span></li>`).join('')}</ol>
   </section>`;
 
-  const drawNews=()=>{
-    const q=busca.toLowerCase();
-    const list=news.filter(n=>(filtroCat==='Todas'||n.categoria===filtroCat)&&(filtroImp==='Todos'||n.impacto===filtroImp)&&(!q||(n.titulo+n.resumo+n.fonte+n.categoria).toLowerCase().includes(q)));
-    document.getElementById('nl').innerHTML=list.length?list.map(newsItem).join(''):'<div class="card err">Nenhuma notícia com esse filtro.</div>';
-  };
-  drawNews();
-  document.getElementById('fc').onclick=e=>{const c=e.target.dataset.c;if(!c)return;filtroCat=c;document.querySelectorAll('#fc .chip').forEach(b=>b.classList.toggle('on',b.dataset.c===c));drawNews();};
-  document.getElementById('fi').onclick=e=>{const c=e.target.dataset.i;if(!c)return;filtroImp=c;document.querySelectorAll('#fi .chip').forEach(b=>b.classList.toggle('on',b.dataset.i===c));drawNews();};
-  document.getElementById('q').oninput=e=>{busca=e.target.value;drawNews();};
-  route();
+  const draw=()=>{const s=q.toLowerCase();const l=news.filter(n=>(fCat==='Todas'||n.categoria===fCat)&&(fImp==='Todos'||n.impacto===fImp)&&(!s||(n.titulo+n.resumo+n.fonte+n.categoria).toLowerCase().includes(s)));
+    document.getElementById('nl').innerHTML=l.length?l.map(row).join(''):'<div class="err">Nada com esse filtro.</div>';
+    document.getElementById('cnt').textContent=`${l.length} de ${news.length} notícias`;};
+  draw();
+  document.getElementById('fc').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;fCat=b.dataset.c;document.querySelectorAll('#fc .fbtn').forEach(x=>x.classList.toggle('on',x===b));draw()};
+  document.getElementById('fi').onclick=e=>{const b=e.target.closest('[data-i]');if(!b)return;fImp=b.dataset.i;document.querySelectorAll('#fi .fbtn').forEach(x=>x.classList.toggle('on',x===b));draw()};
+  document.getElementById('q').oninput=e=>{q=e.target.value;draw()};
+  route(false);
 }
-
-const views=['hoje','noticias','mercado','redes','macro','cenarios','fontes'];
-function route(){
-  const h=(location.hash||'#hoje').slice(1); const v=views.includes(h)?h:'hoje';
+const VIEWS=['hoje','noticias','mercado','redes','macro','cenarios','fontes'];
+function route(scroll=true){const h=(location.hash||'#hoje').slice(1),v=VIEWS.includes(h)?h:'hoje';
   document.querySelectorAll('section.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));
   document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+v));
-  window.scrollTo(0,0);
-}
-window.addEventListener('hashchange',route);
-
-fetch('data.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();})
- .then(j=>{DATA=j;render();})
- .catch(e=>{document.getElementById('app').innerHTML='<div class="card err">Não foi possível carregar os dados ('+esc(e.message)+'). Tente recarregar a página.</div>';});
+  if(scroll){const n=document.querySelector('nav');if(window.scrollY>n.offsetTop)window.scrollTo({top:n.offsetTop})}}
+addEventListener('hashchange',()=>route(true));
+fetch('data.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(j=>{DATA=j;render()})
+ .catch(e=>{document.getElementById('app').innerHTML='<div class="err">Não foi possível carregar os dados ('+esc(e.message)+'). Recarregue a página.</div>'});
 </script>
 </body>
 </html>
