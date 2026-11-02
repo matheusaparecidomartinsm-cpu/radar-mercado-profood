@@ -10,17 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Lilita+One&display=swap" rel="stylesheet">
 <style>
 :root{
-  --verso:#cfccc6;      /* verso cinza do cartão duplex */
-  --cartao:#fbfbf8;     /* face revestida */
-  --kraft:#bf9466;
-  --kraft-esc:#8a6440;
-  --tinta:#1d2350;      /* azul de tinta offset */
-  --tinta-2:#4a4f72;
-  --tinta-3:#7b7f98;
-  --ketchup:#c8341c;
-  --mostarda:#e3a21a;
-  --alface:#4c8a2e;
-  --linha:rgba(29,35,80,.14);
+  --verso:#000000;      /* fundo preto */
+  --cartao:#ffffff;     /* painéis brancos */
+  --kraft:#d7141e;      /* tampa vermelha */
+  --kraft-esc:#d7141e;
+  --tinta:#000000;
+  --tinta-2:#3d3d3d;
+  --tinta-3:#767676;
+  --ketchup:#d7141e;    /* ameaça: vermelho cheio */
+  --mostarda:#d7141e;   /* atenção: anel vermelho */
+  --alface:#000000;     /* oportunidade: preto cheio */
+  --cinza:#f1f1f1;
+  --linha:rgba(0,0,0,.16);
   --display:"Lilita One","Arial Rounded MT Bold",system-ui,sans-serif;
   --texto:"Atkinson Hyperlegible",system-ui,sans-serif;
   --faca:14px;
@@ -29,43 +30,43 @@
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--verso);color:var(--tinta);font:400 16px/1.55 var(--texto);
-  background-image:radial-gradient(rgba(29,35,80,.05) 1px,transparent 1px);background-size:5px 5px}
-a{color:inherit;text-decoration-color:var(--kraft);text-decoration-thickness:2px;text-underline-offset:3px}
+  background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:5px 5px}
+a{color:inherit;text-decoration-color:var(--ketchup);text-decoration-thickness:2px;text-underline-offset:3px}
 a:hover{text-decoration-color:var(--tinta)}
-:focus-visible{outline:3px solid var(--mostarda);outline-offset:2px}
+:focus-visible{outline:3px solid var(--ketchup);outline-offset:2px}
 .wrap{max-width:1240px;margin:0 auto;padding:0 var(--m)}
 .faca{clip-path:polygon(var(--faca) 0,calc(100% - var(--faca)) 0,100% var(--faca),100% calc(100% - var(--faca)),calc(100% - var(--faca)) 100%,var(--faca) 100%,0 calc(100% - var(--faca)),0 var(--faca))}
 
 /* Topo */
-.topo{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0 22px;font-size:14px;color:var(--tinta-2)}
-.marca{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:20px;color:var(--tinta)}
+.topo{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0 22px;font-size:14px;color:rgba(255,255,255,.72)}
+.marca{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:20px;color:#fff}
 .marca svg{width:30px;height:30px;flex:0 0 30px}
 .edicao{text-align:right}
-.edicao b{color:var(--tinta)}
+.edicao b{color:#fff}
 @media(max-width:620px){.topo{flex-direction:column;align-items:flex-start;gap:6px}.edicao{text-align:left}}
 
 /* Tampa da caixa */
 .caixa{perspective:1600px}
 .aba{height:56px;margin:0 9%;background:var(--kraft);border-radius:50% 50% 0 0/100% 100% 0 0;position:relative;transform-origin:50% 100%;animation:abafecha 1.1s cubic-bezier(.2,.75,.2,1) .15s both}
-.aba::after{content:"";position:absolute;left:50%;top:16px;width:62px;height:6px;margin-left:-31px;border-radius:6px;background:rgba(0,0,0,.14)}
-.tampa{background:var(--kraft);color:#1c1410;position:relative;padding:clamp(28px,4.5vw,64px) clamp(22px,5vw,72px) clamp(30px,4vw,56px);
-  border-top:2px dashed rgba(28,20,16,.35);transform-origin:50% 0;animation:fecha 1.1s cubic-bezier(.2,.75,.2,1) .15s both;
-  background-image:repeating-linear-gradient(97deg,rgba(255,255,255,.035) 0 2px,transparent 2px 7px)}
+.aba::after{content:"";position:absolute;left:50%;top:16px;width:62px;height:6px;margin-left:-31px;border-radius:6px;background:rgba(0,0,0,.28)}
+.tampa{background:var(--kraft);color:#fff;position:relative;padding:clamp(28px,4.5vw,64px) clamp(22px,5vw,72px) clamp(30px,4vw,56px);
+  border-top:2px dashed rgba(255,255,255,.55);transform-origin:50% 0;animation:fecha 1.1s cubic-bezier(.2,.75,.2,1) .15s both;
+  background-image:repeating-linear-gradient(97deg,rgba(0,0,0,.04) 0 2px,transparent 2px 7px)}
 @keyframes fecha{from{transform:rotateX(-78deg);filter:brightness(.82)}to{transform:none;filter:none}}
 @keyframes abafecha{from{transform:translateY(-14px) rotateX(40deg)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.tampa,.aba{animation:none}}
-.quando{font-size:15px;margin:0 0 14px;color:#3b2a1d}
-.manchete{font-family:var(--display);font-weight:400;font-size:clamp(38px,6.4vw,92px);line-height:.98;letter-spacing:-.008em;margin:0;max-width:15ch;color:#1c1410;text-wrap:balance}
-.resumo{margin:26px 0 0;max-width:62ch;font-size:clamp(16px,1.5vw,19px);line-height:1.55;color:#2c2018}
-.carimbo{position:absolute;right:clamp(18px,4vw,60px);top:clamp(22px,4vw,54px);width:clamp(96px,11vw,138px);aspect-ratio:1;border:3px solid rgba(29,35,80,.8);border-radius:50%;
-  display:grid;place-items:center;text-align:center;color:rgba(29,35,80,.85);transform:rotate(-9deg);font-size:12px;line-height:1.15}
+.quando{font-size:15px;margin:0 0 14px;color:rgba(255,255,255,.85)}
+.manchete{font-family:var(--display);font-weight:400;font-size:clamp(38px,6.4vw,92px);line-height:.98;letter-spacing:-.008em;margin:0;max-width:15ch;color:#fff;text-wrap:balance}
+.resumo{margin:26px 0 0;max-width:62ch;font-size:clamp(16px,1.5vw,19px);line-height:1.55;color:#fff}
+.carimbo{position:absolute;right:clamp(18px,4vw,60px);top:clamp(22px,4vw,54px);width:clamp(96px,11vw,138px);aspect-ratio:1;border:3px solid #000;border-radius:50%;
+  display:grid;place-items:center;text-align:center;color:#000;transform:rotate(-9deg);font-size:12px;line-height:1.15}
 .carimbo b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(34px,4vw,50px);line-height:.9;margin:2px 0}
 @media(max-width:760px){.carimbo{position:static;margin:0 0 14px auto;width:92px}.aba{margin:0 6%;height:40px}}
 
 /* Abas */
 nav{display:flex;gap:6px;padding:26px 0 0;overflow-x:auto;scrollbar-width:none}
-nav a{flex:0 0 auto;text-decoration:none;font-weight:700;font-size:15px;color:var(--tinta-2);background:#e4e1db;padding:11px 18px 10px;border-radius:12px 12px 0 0;position:relative;top:1px}
-nav a:hover{color:var(--tinta);background:#ecebe6}
+nav a{flex:0 0 auto;text-decoration:none;font-weight:700;font-size:15px;color:rgba(255,255,255,.8);background:#262626;padding:11px 18px 10px;border-radius:12px 12px 0 0;position:relative;top:1px}
+nav a:hover{color:#fff;background:#3a3a3a}
 nav a.on{background:var(--cartao);color:var(--tinta)}
 
 /* Painel */
@@ -92,7 +93,7 @@ h3{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.05;ma
 .rodape-n{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:13.5px;color:var(--tinta-3);align-items:center}
 .sache{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;color:var(--tinta)}
 .sache i{width:14px;height:14px;border-radius:50%;flex:0 0 14px;display:inline-block}
-.s-oportunidade i{background:var(--alface)} .s-ameaca i{background:var(--ketchup)} .s-atencao i{background:var(--mostarda)} .s-neutro i{background:transparent;box-shadow:inset 0 0 0 2px var(--tinta-3)}
+.s-oportunidade i{background:#000} .s-ameaca i{background:var(--ketchup)} .s-atencao i{background:transparent;box-shadow:inset 0 0 0 3px var(--ketchup)} .s-neutro i{background:transparent;box-shadow:inset 0 0 0 2px #000}
 .vertudo{display:inline-block;margin-top:18px;font-weight:700}
 @media(max-width:520px){.noticia{grid-template-columns:52px 1fr;gap:12px}.data{font-size:24px}}
 
@@ -115,7 +116,7 @@ h3{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.05;ma
 /* Sinais e agenda */
 .bloco{margin-top:34px}
 .sinal{padding:12px 0 12px 18px;border-left:6px solid;margin-bottom:8px}
-.sinal.oportunidade{border-color:var(--alface)} .sinal.ameaca{border-color:var(--ketchup)} .sinal.atencao{border-color:var(--mostarda)}
+.sinal.oportunidade{border-color:#000} .sinal.ameaca{border-color:var(--ketchup)} .sinal.atencao{border-left-style:dashed;border-color:var(--ketchup)}
 .sinal b{display:block;font-size:16.5px;margin-bottom:3px}
 .sinal span{font-size:14.5px;color:var(--tinta-2)}
 .agenda{list-style:none;margin:0;padding:0}
@@ -129,9 +130,10 @@ h3{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.05;ma
 .busca{width:100%;max-width:560px;font:400 18px var(--texto);color:var(--tinta);padding:13px 16px;border:2px solid var(--tinta);background:#fff;border-radius:10px;margin-bottom:16px}
 .busca::placeholder{color:var(--tinta-3)}
 .filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
-.filtro{font:700 14px var(--texto);color:var(--tinta);background:#eceae5;border:0;border-radius:999px;padding:8px 14px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
-.filtro:hover{background:#e2dfd8}
-.filtro.on{background:var(--tinta);color:#fff}
+.filtro{font:700 14px var(--texto);color:var(--tinta);background:var(--cinza);border:0;border-radius:999px;padding:8px 14px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.filtro:hover{background:#e2e2e2}
+.filtro.on{background:#000;color:#fff}
+.filtro.on i{outline:2px solid #fff;outline-offset:1px}
 .filtro i{width:12px;height:12px;border-radius:50%}
 .contagem{color:var(--tinta-3);font-size:14px;margin:18px 0 6px}
 
@@ -148,7 +150,7 @@ h3{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.05;ma
 .graficos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 @media(max-width:1000px){.graficos{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.graficos{grid-template-columns:1fr}}
-.graf{background:#f1f0ec;padding:18px 18px 14px;border-radius:4px}
+.graf{background:var(--cinza);padding:18px 18px 14px;border-radius:4px}
 .graf h3{font-size:19px;margin:0}
 .agora{font-family:var(--display);font-size:40px;line-height:1;margin:10px 0 2px}
 .dif{font-size:13.5px;color:var(--tinta-2)}
@@ -159,12 +161,12 @@ h3{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.05;ma
 @media(max-width:860px){.idf{grid-template-columns:1fr}}
 
 /* Cenários */
-.aviso{display:flex;gap:12px;align-items:flex-start;background:#fbf1d6;border-left:6px solid var(--mostarda);padding:14px 18px;margin:0 0 28px;font-size:15px;max-width:900px}
+.aviso{display:flex;gap:12px;align-items:flex-start;background:#fdeaeb;border-left:6px solid var(--ketchup);padding:14px 18px;margin:0 0 28px;font-size:15px;max-width:900px}
 .aviso b{white-space:nowrap}
 .cenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:end}
 @media(max-width:900px){.cenarios{grid-template-columns:1fr}}
-.cen{background:#f1f0ec;padding:24px 24px 22px}
-.cen.base{background:var(--tinta);color:#fff;padding-top:34px;padding-bottom:30px}
+.cen{background:var(--cinza);padding:24px 24px 22px}
+.cen.base{background:#000;color:#fff;padding-top:34px;padding-bottom:30px}
 .cen.base .peq,.cen.base dt,.cen.base p{color:rgba(255,255,255,.78)}
 .cen.base dt,.cen.base dd{border-color:rgba(255,255,255,.22)}
 .cen h3{font-size:22px;margin:0}
@@ -184,7 +186,7 @@ h3{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.05;ma
 .fontes li{margin-bottom:9px;font-size:14.5px}
 .fontes li span{color:var(--tinta-3)}
 
-footer{padding:26px 0 46px;font-size:14px;color:var(--tinta-2);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer{padding:26px 0 46px;font-size:14px;color:rgba(255,255,255,.65);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .compacta .tampa{padding:22px clamp(22px,5vw,72px) 24px;animation:none}
 .compacta .aba{height:26px;animation:none}
 .compacta .manchete{font-size:clamp(24px,2.6vw,34px);max-width:none}
@@ -241,7 +243,7 @@ const curta=s=>{const d=D(s);return `${d.getDate()}/${d.getMonth()+1}`};
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const num=(v,d=2)=>Number(v).toFixed(d).replace('.',',');
 const IMP={oportunidade:'Oportunidade',ameaca:'Ameaça',atencao:'Atenção',neutro:'Contexto'};
-const COR={oportunidade:'var(--alface)',atencao:'var(--mostarda)',ameaca:'var(--ketchup)',neutro:'var(--tinta-3)'};
+const COR={oportunidade:'#000',atencao:'transparent;box-shadow:inset 0 0 0 3px var(--ketchup)',ameaca:'var(--ketchup)',neutro:'transparent;box-shadow:inset 0 0 0 2px #000'};
 let DATA,fCat='Todas',fImp='Todos',q='';
 
 const noticia=n=>`<li class="noticia"><div class="data">${dd(n.data)}<small>${mes(n.data)}</small></div>
@@ -255,7 +257,7 @@ function linha({rot,val,cor,tracejado=false,dec=2}){
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="De ${num(val[0],dec)} para ${num(val[u],dec)}">
    <line x1="0" x2="${W-p.r}" y1="${H-p.b}" y2="${H-p.b}" stroke="var(--tinta)" stroke-width="1.5"/>
    <polyline points="${val.map((v,i)=>`${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ')}" fill="none" stroke="${cor}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" ${tracejado?'stroke-dasharray="7 5"':''}/>
-   ${val.map((v,i)=>`<circle cx="${x(i)}" cy="${y(v)}" r="${i===u?5.5:3}" fill="${i===u?cor:'#f1f0ec'}" stroke="${cor}" stroke-width="2"/>`).join('')}
+   ${val.map((v,i)=>`<circle cx="${x(i)}" cy="${y(v)}" r="${i===u?5.5:3}" fill="${i===u?cor:'#f1f1f1'}" stroke="${cor}" stroke-width="2"/>`).join('')}
    <text x="${x(u)+10}" y="${y(val[u])+4}" font-family="Atkinson Hyperlegible,sans-serif" font-weight="700" font-size="12" fill="var(--tinta)">${num(val[u],dec)}</text>
    ${rot.map((l,i)=>`<text x="${x(i)}" y="${H-5}" font-family="Atkinson Hyperlegible,sans-serif" font-size="11" fill="var(--tinta-3)" text-anchor="${i===0?'start':i===u?'end':'middle'}">${esc(l)}</text>`).join('')}
   </svg>`;
@@ -264,7 +266,7 @@ function barras({rot,val}){
   const W=620,H=190,p={t:34,b:26};const top=Math.max(...val),mx=top*1.08||1,bw=W/rot.length;
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Vendas nominais do foodservice por mês">
    <line x1="0" x2="${W}" y1="${H-p.b}" y2="${H-p.b}" stroke="var(--tinta)" stroke-width="1.5"/>
-   ${val.map((v,i)=>{const h=(H-p.t-p.b)*v/mx,xx=i*bw+bw*.16,w=bw*.68;return `<path d="M${xx} ${H-p.b}V${H-p.b-h+10}l10 -10H${xx+w-10}l10 10V${H-p.b}z" fill="${v===top?'var(--kraft)':'#ddd2c4'}"/>
+   ${val.map((v,i)=>{const h=(H-p.t-p.b)*v/mx,xx=i*bw+bw*.16,w=bw*.68;return `<path d="M${xx} ${H-p.b}V${H-p.b-h+10}l10 -10H${xx+w-10}l10 10V${H-p.b}z" fill="${v===top?'var(--ketchup)':'#000'}"/>
    <text x="${xx}" y="${H-p.b-h-10}" font-family="Lilita One,sans-serif" font-size="22" fill="var(--tinta)">${num(v,1)}%</text>
    <text x="${xx}" y="${H-7}" font-family="Atkinson Hyperlegible,sans-serif" font-size="13" fill="var(--tinta-2)">${esc(rot[i])}</text>`}).join('')}
   </svg>`;
@@ -346,7 +348,7 @@ function render(){
     <p class="intro">Como o mercado financeiro vem mudando a aposta para 2027 no Boletim Focus, do Banco Central. Dólar e inflação mexem no custo do papel-cartão; juros e PIB mexem no ritmo de abertura de lojas.</p>
     <div class="graficos">
       <div class="graf"><h3>Inflação (IPCA)</h3><div class="agora">${num(f.ipca.at(-1))}%</div><div class="dif">${dif(f.ipca)}</div>${linha({rot:fl,val:f.ipca,cor:'var(--ketchup)'})}</div>
-      <div class="graf"><h3>Crescimento (PIB)</h3><div class="agora">${num(f.pib.at(-1))}%</div><div class="dif">${dif(f.pib)}</div>${linha({rot:fl,val:f.pib,cor:'var(--alface)'})}</div>
+      <div class="graf"><h3>Crescimento (PIB)</h3><div class="agora">${num(f.pib.at(-1))}%</div><div class="dif">${dif(f.pib)}</div>${linha({rot:fl,val:f.pib,cor:'#000'})}</div>
       <div class="graf"><h3>Selic no fim do ano</h3><div class="agora">${num(f.selic.at(-1))}%</div><div class="dif">${dif(f.selic)}</div>${linha({rot:fl,val:f.selic,cor:'var(--tinta)'})}</div>
       <div class="graf"><h3>Dólar no fim do ano</h3><div class="agora">R$ ${num(f.dolar.at(-1))}</div><div class="dif">${dif(f.dolar,2,'')}</div>${linha({rot:fl,val:f.dolar,cor:'var(--kraft-esc)',tracejado:true})}</div>
     </div>
@@ -369,10 +371,10 @@ function render(){
     <div class="metodo">
       <div><h3>Como o radar funciona</h3><p>Todo dia, antes das 7h, uma rotina automática procura novidades nas fontes do projeto: ABF, ABRE, IFB, Abrasel, IBGE, Banco Central, fabricantes de papel e imprensa econômica. Ela resume cada uma com palavras próprias, marca o impacto e atualiza os números.</p></div>
       <div><h3>As cores do impacto</h3><div class="cores">
-        <span class="sache s-oportunidade"><i></i>Alface: oportunidade de venda</span>
-        <span class="sache s-atencao"><i></i>Mostarda: vale acompanhar</span>
-        <span class="sache s-ameaca"><i></i>Ketchup: risco para preço ou volume</span>
-        <span class="sache s-neutro"><i></i>Sem cor: contexto</span></div></div>
+        <span class="sache s-oportunidade"><i></i>Preto cheio: oportunidade de venda</span>
+        <span class="sache s-atencao"><i></i>Anel vermelho: vale acompanhar</span>
+        <span class="sache s-ameaca"><i></i>Vermelho cheio: risco para preço ou volume</span>
+        <span class="sache s-neutro"><i></i>Anel preto: contexto</span></div></div>
       <div><h3>Cuidados</h3><p>O índice do IFB cobre grandes redes, não o mercado todo. Faturamento do foodservice, vendas da indústria para o canal e mercado de embalagens são números diferentes. Os cenários são estimativa nossa.</p></div>
     </div>
     <div class="duas">
