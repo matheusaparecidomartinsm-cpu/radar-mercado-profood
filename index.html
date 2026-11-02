@@ -163,6 +163,7 @@ h3{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.05;ma
 /* Cenários */
 .aviso{display:flex;gap:12px;align-items:flex-start;background:#fdeaeb;border-left:6px solid var(--ketchup);padding:14px 18px;margin:0 0 28px;font-size:15px;max-width:900px}
 .aviso b{white-space:nowrap}
+@media(max-width:620px){.aviso{flex-direction:column;gap:4px}}
 .cenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:end}
 @media(max-width:900px){.cenarios{grid-template-columns:1fr}}
 .cen{background:var(--cinza);padding:24px 24px 22px}
@@ -192,6 +193,38 @@ footer{padding:26px 0 46px;font-size:14px;color:rgba(255,255,255,.65);display:fl
 .compacta .manchete{font-size:clamp(24px,2.6vw,34px);max-width:none}
 .compacta .resumo,.compacta .carimbo{display:none}
 .compacta .quando{margin-bottom:6px;font-size:14px}
+/* Clientes */
+.cl-resumo{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 26px}
+@media(max-width:760px){.cl-resumo{grid-template-columns:1fr}}
+.cl-resumo div{background:var(--cinza);padding:16px 18px}
+.cl-resumo b{display:block;font-family:var(--display);font-weight:400;font-size:34px;line-height:1;margin-bottom:4px}
+.cl-resumo span{font-size:14px;color:var(--tinta-2)}
+.cl-resumo .r{background:var(--ketchup);color:#fff}.cl-resumo .r span{color:#fff}
+.legenda-crit{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:var(--tinta-2);margin:6px 0 18px}
+.legenda-crit i{display:inline-block;width:12px;height:12px;margin-right:6px;vertical-align:-1px}
+.cliente{display:grid;grid-template-columns:64px minmax(0,1fr) 210px;gap:18px;padding:18px 0;border-top:2px dashed var(--linha);align-items:start}
+.cliente:first-child{border-top:0}
+.cliente .pos{font-family:var(--display);font-size:38px;line-height:.9}
+.cliente h4{margin:0 0 3px;font-size:18.5px;line-height:1.25}
+.cliente .sub{font-size:13.5px;color:var(--tinta-3);margin-bottom:8px}
+.cliente .info2{font-size:14.5px;color:var(--tinta-2);margin:0 0 4px}
+.cliente .info2 b{color:var(--tinta)}
+.barra{display:flex;height:12px;margin:10px 0 4px;max-width:440px;background:var(--cinza)}
+.barra i{display:block;height:100%}
+.c0{background:#000}.c1{background:var(--ketchup)}.c2{background:#6b6b6b}.c3{background:#f08a8f}.c4{background:#bdbdbd}
+.pts{font-size:13px;color:var(--tinta-3)}
+.cliente details{margin-top:8px;font-size:14.5px}
+.cliente summary{cursor:pointer;font-weight:700;color:var(--tinta);width:max-content}
+.cliente summary::marker{color:var(--ketchup)}
+.cliente details p{margin:8px 0 0;color:var(--tinta-2);max-width:72ch}
+.lado{text-align:right}
+.prio{display:inline-block;font-family:var(--display);font-size:16px;padding:4px 12px;border-radius:999px;margin-bottom:10px}
+.prio.A{background:var(--ketchup);color:#fff}.prio.B{background:#000;color:#fff}.prio.C{background:var(--cinza);color:#000}
+.lado .gasto{font-family:var(--display);font-size:24px;line-height:1}
+.lado small{display:block;font-size:12.5px;color:var(--tinta-3);margin-top:3px}
+.lado .meta{margin-top:10px;font-size:14px}
+.lado .meta b{font-size:16px}
+@media(max-width:760px){.cliente{grid-template-columns:48px 1fr}.cliente .pos{font-size:30px}.lado{grid-column:2;text-align:left;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}.prio{margin:0}}
 .erro{padding:40px 0;font-size:18px;color:var(--tinta-2);list-style:none}
 </style>
 </head>
@@ -220,6 +253,7 @@ footer{padding:26px 0 46px;font-size:14px;color:rgba(255,255,255,.65);display:fl
     <a href="#noticias">Notícias</a>
     <a href="#mercado">Mercado</a>
     <a href="#redes">Redes em expansão</a>
+    <a href="#clientes">50 clientes</a>
     <a href="#macro">Economia 2027</a>
     <a href="#cenarios">Cenários</a>
     <a href="#fontes">Fontes</a>
@@ -287,7 +321,8 @@ function render(){
   const hoje=new Date().toISOString().slice(0,10);
   const ag=[...d.agenda].sort((a,b)=>a.data.localeCompare(b.data));
   const dif=(a,dec=2,un=' ponto')=>{if(a.length<2)return '';const v=a.at(-1)-a[0];if(!v)return `Estável desde ${fl[0]}`;return `${v>0?'Subiu':'Caiu'} ${num(Math.abs(v),dec)}${un} desde ${fl[0]}`};
-  const fontes=[...new Map([...d.kpis,...d.mercado,...d.noticias,...d.redes].map(x=>[x.url,x])).values()];
+  const fontes=[...new Map([...d.kpis,...d.mercado,...d.noticias,...d.redes,...((d.clientes&&d.clientes.lista)||[]).map(c=>({url:c.url,titulo:c.nome,fonte:c.fonte}))].map(x=>[x.url,x])).values()];
+  const C=d.clientes;
 
   document.getElementById('app').innerHTML=`
   <section class="view" id="v-hoje">
@@ -343,6 +378,24 @@ function render(){
     </tbody></table></div>
   </section>
 
+  <section class="view" id="v-clientes">
+    <h2>Os 50 clientes para abordar em 2027</h2>
+    <p class="intro">Redes de alimentação com maior potencial de compra de embalagens de papel-cartão personalizadas, ordenadas por uma pontuação de 0 a 100. Use a prioridade A para a agenda de visitas do primeiro semestre.</p>
+    ${C?`<div class="cl-resumo">
+      <div class="r"><b>${C.lista.filter(c=>c.prioridade==='A').length} redes</b><span>com prioridade A para prospecção</span></div>
+      <div><b>R$ ${num(C.lista.filter(c=>c.prioridade==='A').reduce((a,c)=>a+(c.gasto_mi||0),0),0)} mi/ano</b><span>compra estimada de papel-cartão das redes A</span></div>
+      <div><b>R$ ${num(C.lista.filter(c=>c.prioridade==='A').reduce((a,c)=>a+(c.meta5_mi||0),0),1)} mi/ano</b><span>se a ProFood conquistar 5% dessa compra</span></div></div>
+    <div class="aviso"><b>Estimativa nossa.</b><span>${esc(C.nota)}</span></div>
+    <div class="legenda-crit">${C.criterios.map((c,i)=>`<span><i class="c${i}"></i>${esc(c[0])} (até ${c[1]})</span>`).join('')}</div>
+    <input class="busca" id="qc" type="search" placeholder="Procure uma rede, grupo ou região" aria-label="Procurar clientes">
+    <div class="filtros" id="fp">${['Todas','A','B','C'].map(c=>`<button class="filtro ${c==='Todas'?'on':''}" data-p="${c}">${c==='Todas'?'Todas as prioridades':'Prioridade '+c}</button>`).join('')}</div>
+    <div class="filtros" id="fs">${['Todos',...new Set(C.lista.map(c=>c.segmento))].map(c=>`<button class="filtro ${c==='Todos'?'on':''}" data-s="${esc(c)}">${c==='Todos'?'Todos os segmentos':esc(c)}</button>`).join('')}</div>
+    <p class="contagem" id="cntc"></p>
+    <ul class="noticias" id="cl"></ul>
+    <h3 style="margin-top:30px">Como a pontuação e o gasto foram calculados</h3>
+    <p class="peq" style="font-size:15px;max-width:80ch">${esc(C.premissas)} Pontuação: escala pelo número de lojas; aderência pelo quanto a categoria usa papel-cartão; crescimento pelo plano de expansão divulgado (redes com problemas financeiros perdem pontos); facilidade de acesso pelo porte e pela forma de compra (redes globais com fornecedores homologados valem menos); delivery pelo peso do canal na categoria.</p>`:'<p class="erro">A lista de clientes ainda não está nos dados.</p>'}
+  </section>
+
   <section class="view" id="v-macro">
     <h2>A economia esperada para 2027</h2>
     <p class="intro">Como o mercado financeiro vem mudando a aposta para 2027 no Boletim Focus, do Banco Central. Dólar e inflação mexem no custo do papel-cartão; juros e PIB mexem no ritmo de abertura de lojas.</p>
@@ -387,12 +440,29 @@ function render(){
     document.getElementById('nl').innerHTML=l.length?l.map(noticia).join(''):'<li class="erro">Nenhuma notícia com esses filtros. Limpe a busca ou escolha outro tema.</li>';
     document.getElementById('cnt').textContent=l.length===news.length?`${news.length} notícias`:`${l.length} de ${news.length} notícias`;};
   desenha();
+  if(C){let fP='Todas',fS='Todos',qc='';const lab=['escala','aderencia','crescimento','acesso','delivery'];
+    const card=c=>`<li class="cliente"><div class="pos">${c.posicao}</div><div>
+      <h4><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.nome)}</a></h4>
+      <div class="sub">${esc(c.segmento)}, ${esc(c.grupo)}, ${esc(c.regiao)}</div>
+      <p class="info2"><b>${esc(c.lojas)}.</b> ${esc(c.plano)}.</p>
+      <div class="barra" role="img" aria-label="Pontuação ${c.pontuacao} de 100">${lab.map((k,i)=>`<i class="c${i}" style="width:${c.pontos[k]}%" title="${C.criterios[i][0]}: ${c.pontos[k]}"></i>`).join('')}</div>
+      <div class="pts">${c.pontuacao} pontos de 100. Dificuldade de acesso ${c.dificuldade.toLowerCase()}.</div>
+      <details><summary>Como abordar</summary><p>${esc(c.abordagem)}</p><p><b>O que oferecer:</b> ${esc(c.produtos)}.</p><p>Fonte dos números: <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.fonte)}</a>.</p></details></div>
+      <div class="lado"><span class="prio ${c.prioridade}">Prioridade ${c.prioridade}</span>
+      ${c.gasto_mi!=null?`<div class="gasto">R$ ${num(c.gasto_mi,1)} mi</div><small>compra estimada de papel-cartão por ano</small><div class="meta">5% da conta: <b>R$ ${Math.round(c.meta5_mi*1000).toLocaleString('pt-BR')} mil</b></div>`:`<small>Sem base de lojas suficiente para estimar a compra</small>`}</div></li>`;
+    const dc=()=>{const s=qc.toLowerCase();const l=C.lista.filter(c=>(fP==='Todas'||c.prioridade===fP)&&(fS==='Todos'||c.segmento===fS)&&(!s||(c.nome+c.grupo+c.regiao+c.segmento).toLowerCase().includes(s)));
+      document.getElementById('cl').innerHTML=l.length?l.map(card).join(''):'<li class="erro">Nenhuma rede com esses filtros. Limpe a busca ou escolha outra prioridade.</li>';
+      document.getElementById('cntc').textContent=l.length===C.lista.length?`${l.length} redes`:`${l.length} de ${C.lista.length} redes`;};
+    dc();
+    document.getElementById('fp').onclick=e=>{const b=e.target.closest('[data-p]');if(!b)return;fP=b.dataset.p;document.querySelectorAll('#fp .filtro').forEach(x=>x.classList.toggle('on',x===b));dc()};
+    document.getElementById('fs').onclick=e=>{const b=e.target.closest('[data-s]');if(!b)return;fS=b.dataset.s;document.querySelectorAll('#fs .filtro').forEach(x=>x.classList.toggle('on',x===b));dc()};
+    document.getElementById('qc').oninput=e=>{qc=e.target.value;dc()};}
   document.getElementById('fc').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;fCat=b.dataset.c;document.querySelectorAll('#fc .filtro').forEach(x=>x.classList.toggle('on',x===b));desenha()};
   document.getElementById('fi').onclick=e=>{const b=e.target.closest('[data-i]');if(!b)return;fImp=b.dataset.i;document.querySelectorAll('#fi .filtro').forEach(x=>x.classList.toggle('on',x===b));desenha()};
   document.getElementById('q').oninput=e=>{q=e.target.value;desenha()};
   rota(false);
 }
-const VIEWS=['hoje','noticias','mercado','redes','macro','cenarios','fontes'];
+const VIEWS=['hoje','noticias','mercado','redes','clientes','macro','cenarios','fontes'];
 function rota(rolar=true){const h=(location.hash||'#hoje').slice(1),v=VIEWS.includes(h)?h:'hoje';
   document.querySelectorAll('section.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));document.body.classList.toggle('compacta',v!=='hoje');
   document.querySelectorAll('#nav a').forEach(a=>{const on=a.getAttribute('href')==='#'+v;a.classList.toggle('on',on);on?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current')});
